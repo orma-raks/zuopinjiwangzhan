@@ -1,0 +1,2457 @@
+<html lang="zh-CN" class="h-full" style="--cursor-x: 733px; --cursor-y: 344px;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>程铭果 — 数字媒体艺术设计师</title>
+<meta name="description" content="程铭果 · 数字媒体艺术（交互方向）· 作品集与简历 · UI/UX设计 · 平面海报 · 宣传册 · AI辅助设计">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+animation: {
+'fade-in': 'fadeIn 0.8s ease-out forwards',
+'slide-up': 'slideUp 0.8s ease-out forwards',
+'blur-in': 'blurIn 0.8s ease-out forwards',
+'scale-in': 'scaleIn 0.8s ease-out forwards',
+'float': 'float 6s ease-in-out infinite',
+'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+'slide-out-left': 'slideOutLeft 0.8s ease-out forwards',
+'marquee': 'marquee 25s linear infinite',
+'marquee-reverse': 'marquee-reverse 25s linear infinite',
+'typing': 'typing 4s steps(40, end) infinite',
+'blink': 'blink 1s infinite'
+},
+keyframes: {
+fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+slideUp: { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+blurIn: { '0%': { opacity: '0', filter: 'blur(8px)' }, '100%': { opacity: '1', filter: 'blur(0px)' } },
+scaleIn: { '0%': { opacity: '0', transform: 'scale(0.95)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
+float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-8px)' } },
+pulseGlow: { '0%, 100%': { boxShadow: '0 0 20px rgba(34, 197, 94, 0.3)' }, '50%': { boxShadow: '0 0 40px rgba(34, 197, 94, 0.6), 0 0 80px rgba(34, 197, 94, 0.2)' } },
+slideInLeft: { '0%': { opacity: '0', transform: 'translateX(-100%)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+slideOutLeft: { '0%': { opacity: '1', transform: 'translateX(0)' }, '100%': { opacity: '0', transform: 'translateX(-100%)' } },
+letterReveal: { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+marquee: { '0%': { transform: 'translateX(0%)' }, '100%': { transform: 'translateX(-100%)' } },
+'marquee-reverse': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0%)' } },
+typing: { '0%': { width: '0' }, '100%': { width: '100%' } },
+blink: { '0%, 50%': { opacity: '1' }, '51%, 100%': { opacity: '0' } }
+}
+}
+}
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap">
+<style>
+body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+.font-geist { font-family: 'Geist', sans-serif !important; }
+
+.cursor-invert-mask { position: relative; }
+.cursor-invert-mask::before {
+  content: '';
+  position: fixed;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: white;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  transform: translate(-50%, -50%);
+  left: var(--cursor-x, 0px);
+  top: var(--cursor-y, 0px);
+}
+.cursor-invert-active .cursor-invert-mask::before { opacity: 1; }
+
+.letter-animated { display: inline-block; opacity: 0; transform: translateY(24px); transition: none; }
+.letter-animated.animate { animation: letterReveal 0.6s ease-out forwards; }
+@keyframes letterReveal {
+  0% { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== Hero 区域 悬停 & 点击动效 (紫色主题) ========== */
+
+/* 标题逐字悬停弹跳 */
+.letter-animated.animate { transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), color 0.2s; cursor: default; }
+.letter-animated.animate:hover { transform: translateY(-8px) scale(1.15) !important; color: #c4b5fd !important; }
+
+/* 头像点击涟漪 */
+@keyframes avatarRipple {
+  0% { transform: scale(1); border-color: rgba(196,181,253,0.7); opacity: 1; }
+  100% { transform: scale(1.8); border-color: rgba(196,181,253,0); opacity: 0; }
+}
+.hero-avatar-wrapper:active .avatar-ripple { animation: avatarRipple 0.6s ease-out forwards; }
+
+/* 按钮点击涟漪 */
+@keyframes btnRipple {
+  0% { width: 0; height: 0; opacity: 0.5; margin-left: 0; margin-top: 0; }
+  100% { width: 300px; height: 300px; opacity: 0; margin-left: -150px; margin-top: -150px; }
+}
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  border-radius: 50%;
+  background: currentColor;
+  pointer-events: none;
+}
+.btn-ripple-primary::after { background: rgba(167,139,250,0.35); }
+.btn-ripple-secondary::after { background: rgba(255,255,255,0.2); }
+.hero-btn-primary .btn-ripple:active::after { animation: btnRipple 0.55s ease-out forwards; }
+.hero-btn-secondary .btn-ripple:active::after { animation: btnRipple 0.55s ease-out forwards; }
+
+/* 统计数字悬停发光 */
+.hero-stat:hover { box-shadow: 0 8px 32px rgba(167,139,250,0.12), 0 0 0 1px rgba(167,139,250,0.1); }
+
+/* 项目标签脉冲悬停 */
+#heroSection .inline-flex.items-center.gap-2.rounded-full.border:hover {
+  animation: tagPulse 1.8s ease-in-out infinite;
+  border-color: rgba(167,139,250,0.35);
+}
+@keyframes tagPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(167,139,250,0.18); }
+  50% { box-shadow: 0 0 16px 4px rgba(167,139,250,0.12), 0 0 0 0 rgba(167,139,250,0); }
+}
+
+/* 副标题文字悬停变色 */
+#heroSection .text-xl.lg\:text-2xl.text-gray-400.transition-colors,
+.hero-title-wrap + div p,
+#heroSection p.mt-6 {
+  transition: all 0.4s ease;
+}
+/* 副标题区域整体悬停 */
+.hero-intro-hover-wrap { transition: all 0.4s ease; }
+
+.typing-container { position: relative; }
+.typing-line { opacity: 0; white-space: nowrap; overflow: hidden; border-right: 2px solid #10B981; }
+.typing-line.typing { animation: typing 3s steps(40, end) forwards, blink 1s infinite; }
+.typing-line.typed { opacity: 1; border-right: none; }
+.typing-cursor { display: inline-block; background-color: #10B981; width: 2px; animation: blink 1s infinite; }
+@keyframes typing { 0% { opacity: 1; width: 0; } 100% { opacity: 1; width: 100%; } }
+@keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+/* work card image container */
+.work-img-container { overflow: hidden; }
+.work-img-container img { transition: transform 0.7s ease; }
+.group:hover .work-img-container img { transform: scale(1.05); }
+
+/* about main image hover */
+.about-main-img-container { overflow: hidden; }
+.about-main-img-container img { transition: transform 0.7s ease; }
+.about-main-img-container:hover img { transform: scale(1.05); }
+
+/* Process card mockups */
+.process-card-img-container { overflow: hidden; border-radius: 16px; }
+.process-card-img-container img { transition: transform 0.6s ease; }
+.group:hover .process-card-img-container img { transform: scale(1.04); }
+
+/* ====== 开屏加载动画 ====== */
+.ax-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+}
+.ax-loader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  padding: 0 24px;
+}
+.ax-loader__brand {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  font-size: clamp(2.2rem, 8vw, 5rem);
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(10px);
+}
+.ax-dot {
+  width: 0.14em;
+  height: 0.14em;
+  margin-left: 0.14em;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 28px rgba(34, 197, 94, 0.65);
+}
+.ax-loader__track {
+  width: min(300px, 64vw);
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+.ax-loader__bar {
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, rgba(34, 197, 94, 0.82));
+}
+.ax-loader__meta {
+  display: flex;
+  justify-content: space-between;
+  width: min(300px, 64vw);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  opacity: 0;
+}
+
+/* Profile portrait animations */
+@keyframes profileEntry {
+  0% { opacity: 0; transform: scale(0.72) translateY(36px); }
+  60% { opacity: 1; transform: scale(1.04) translateY(-4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes profileFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(0.5deg); }
+  75% { transform: translateY(4px) rotate(-0.3deg); }
+}
+@keyframes profileGlowPulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(255,255,255,0.06), 0 0 0px rgba(168,130,255,0); }
+  50% { box-shadow: 0 0 50px rgba(255,255,255,0.10), 0 0 40px rgba(168,130,255,0.12); }
+}
+
+/* ====== 增强动效：旋转渐变边框 ====== */
+@keyframes borderRotate {
+  0% { --border-angle: 0deg; }
+  100% { --border-angle: 360deg; }
+}
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* 光晕扩散波纹 */
+@keyframes rippleRing {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+/* 浮动星尘粒子 */
+@keyframes starFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.7; }
+  25% { transform: translate(8px, -12px) scale(1.2) rotate(45deg); opacity: 1; }
+  50% { transform: translate(-4px, -18px) scale(0.9) rotate(90deg); opacity: 0.6; }
+  75% { transform: translate(-10px, -6px) scale(1.1) rotate(135deg); opacity: 0.9; }
+}
+@keyframes starFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.6; }
+  25% { transform: translate(-10px, -8px) scale(1.15) rotate(-30deg); opacity: 1; }
+  50% { transform: translate(6px, -16px) scale(0.85) rotate(-60deg); opacity: 0.5; }
+  75% { transform: translate(12px, -4px) scale(1.05) rotate(-90deg); opacity: 0.85; }
+}
+@keyframes starFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  33% { transform: translate(12px, 6px) scale(1.3) rotate(60deg); opacity: 0.95; }
+  66% { transform: translate(-6px, 14px) scale(0.8) rotate(120deg); opacity: 0.55; }
+}
+@keyframes starFloat4 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.65; }
+  33% { transform: translate(-14px, 2px) scale(1.2) rotate(-45deg); opacity: 1; }
+  66% { transform: translate(4px, 16px) scale(0.9) rotate(-90deg); opacity: 0.5; }
+}
+
+/* 轨道光环 */
+@keyframes orbitRing {
+  0% { transform: rotate(0deg) translateX(110px) rotate(0deg); opacity: 0.3; }
+  25% { transform: rotate(90deg) translateX(110px) rotate(-90deg); opacity: 0.7; }
+  50% { transform: rotate(180deg) translateX(110px) rotate(-180deg); opacity: 0.3; }
+  75% { transform: rotate(270deg) translateX(110px) rotate(-270deg); opacity: 0.7; }
+  100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); opacity: 0.3; }
+}
+
+/* 呼吸光圈 */
+@keyframes breatheCircle {
+  0%, 100% { r: 70; opacity: 0.08; stroke-width: 1; }
+  50% { r: 82; opacity: 0.18; stroke-width: 1.5; }
+}
+
+/* 闪烁光芒 */
+@keyframes shimmer {
+  0% { left: -120%; }
+  100% { left: 200%; }
+}
+
+.profile-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* 外层旋转渐变边框容器 — 已禁用 */
+.profile-border-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 24px;
+  background: conic-gradient(from var(--border-angle, 0deg),
+    #a78bfa 0%,
+    #818cf8 15%,
+    #6ee7b7 30%,
+    #34d399 45%,
+    #fbbf24 60%,
+    #f472b6 75%,
+    #a78bfa 90%,
+    #818cf8 100%);
+  animation: borderRotate 4s linear infinite;
+  z-index: 0;
+  filter: blur(1px);
+  opacity: 0.85;
+  display: none;
+}
+
+/* 波纹层 — 已禁用 */
+.profile-ripple {
+  position: absolute;
+  inset: -4px;
+  border-radius: 24px;
+  border: 2px solid rgba(167,139,250,0.35);
+  z-index: 1;
+  animation: rippleRing 3s ease-out infinite;
+  display: none;
+}
+.profile-ripple:nth-child(2) { animation-delay: 1s; }
+.profile-ripple:nth-child(3) { animation-delay: 2s; }
+
+/* SVG光晕背景 — 已禁用 */
+.profile-glow-svg {
+  position: absolute;
+  inset: -40px;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+  display: none;
+}
+
+/* 星尘粒子容器 — 已禁用 */
+.profile-particles {
+  position: absolute;
+  inset: -20px;
+  z-index: 2;
+  pointer-events: none;
+  display: none;
+}
+.profile-star {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(167,139,250,0.4) 50%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(0.5px);
+}
+.profile-star::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -7px;
+  background: radial-gradient(circle, rgba(167,139,250,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.profile-star:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); animation: starFloat1 5s ease-in-out infinite; }
+.profile-star:nth-child(2) { bottom: 8%; right: -2%; animation: starFloat2 6s ease-in-out infinite 0.5s; }
+.profile-star:nth-child(3) { top: 15%; left: -4%; width: 5px; height: 5px; animation: starFloat3 5.5s ease-in-out infinite 1s; }
+.profile-star:nth-child(4) { bottom: -4%; left: 18%; width: 4px; height: 4px; animation: starFloat4 7s ease-in-out infinite 1.5s; }
+.profile-star:nth-child(5) { top: -6%; right: 22%; width: 5px; height: 5px; animation: starFloat2 6.5s ease-in-out infinite 2s; }
+
+/* 轨道小圆点 — 已禁用 */
+.profile-orbit-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  margin-left: -4px;
+  margin-top: -4px;
+  z-index: 1;
+  display: none;
+}
+.profile-orbit-dot::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a78bfa, #6ee7b7);
+  box-shadow: 0 0 12px rgba(167,139,250,0.5), 0 0 24px rgba(110,231,183,0.3);
+  animation: orbitRing 8s linear infinite;
+}
+.profile-orbit-dot:nth-child(1)::before { animation-duration: 8s; }
+.profile-orbit-dot:nth-child(2)::before { animation-duration: 11s; animation-direction: reverse; }
+.profile-orbit-dot:nth-child(3)::before { animation-duration: 13s; animation-delay: -3s; }
+
+/* 闪光扫过效果 — 已禁用 */
+.profile-shimmer {
+  position: absolute;
+  top: 0; left: -120%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255,255,255,0.08) 48%,
+    rgba(255,255,255,0.18) 52%,
+    rgba(255,255,255,0.08) 65%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+  border-radius: 0;
+  animation: shimmer 5s ease-in-out infinite;
+  animation-delay: 2s;
+  display: none;
+}
+
+.profile-image-container {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  border-radius: 0;
+  z-index: 3;
+  /* animation removed */
+}
+.profile-portrait {
+  border-radius: 0;
+  display: block;
+  /* animation removed */
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease;
+  position: relative;
+  z-index: 4;
+}
+.profile-portrait:hover {
+  animation-play-state: paused;
+  transform: scale(1.08) rotate(1deg);
+  box-shadow: 0 20px 60px rgba(168,130,255,0.22), 0 0 0 1px rgba(255,255,255,0.06);
+}
+/* hover时加速粒子运动 */
+.profile-image-container:hover ~ .profile-particles .profile-star,
+.profile-wrapper:hover .profile-star {
+  animation-duration: 2s !important;
+}
+
+/* ====== 拆解式多层头像合成 & 动效 ====== */
+
+/* 合成容器 — 纵向堆叠布局 */
+.profile-composite {
+  position: relative;
+  overflow: visible;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 图层通用 */
+.composite-layer {
+  position: absolute;
+  will-change: transform, opacity;
+}
+
+/* ---- 上层：人物照片（主视觉） ---- */
+@keyframes compositePersonEntry {
+  0% { opacity: 0; transform: scale(0.85) translateY(30px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes compositePersonBreathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.01); }
+}
+.composite-person {
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 300px; height: auto;
+  z-index: 10;
+  animation: compositePersonEntry 1s cubic-bezier(0.16,1,0.3,1) 0.4s both,
+             compositePersonBreathe 5s ease-in-out infinite 1.4s;
+}
+.composite-img-person {
+  width: 100%; height: auto; display: block;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.45), 0 0 60px rgba(168,130,255,0.08);
+}
+
+/* ---- 左侧矩形框（工具栏）— 在人物下方左侧不规则浮动 ---- */
+@keyframes toolbarPopIn {
+  0% { opacity: 0; transform: translateY(40px) translateX(-20px) scale(0.7) rotate(-8deg); }
+  70% { opacity: 1; transform: translateY(-6px) translateX(4px) scale(1.04) rotate(2deg); }
+  100% { opacity: 1; transform: translateY(0) translateX(0) scale(1) rotate(0deg); }
+}
+@keyframes toolbarIrregularFloat {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); }
+  12%  { transform: translateY(-7px) translateX(5px) rotate(1.5deg); }
+  25%  { transform: translateY(3px) translateX(-4px) rotate(-1deg); }
+  38%  { transform: translateY(-9px) translateX(6px) rotate(2deg); }
+  52%  { transform: translateY(5px) translateX(-3px) rotate(-0.5deg); }
+  65%  { transform: translateY(-4px) translateX(4px) rotate(1deg); }
+  78%  { transform: translateY(7px) translateX(-5px) rotate(-1.5deg); }
+  90%  { transform: translateY(-2px) translateX(3px) rotate(0.8deg); }
+  100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+.composite-toolbar {
+  top: 220px; left: -20px;
+  width: 72px; height: auto;
+  z-index: 8;
+  animation: toolbarPopIn 0.9s cubic-bezier(0.34,1.56,0.64,1) 1s both,
+             toolbarIrregularFloat 9s ease-in-out infinite 1.9s;
+  filter: drop-shadow(0 6px 18px rgba(59,130,246,0.3));
+}
+.composite-img-toolbar {
+  width: 100%; display: block; border-radius: 6px;
+}
+
+.composite-panel {
+  display: none;
+}
+
+/* ---- 左下：钢笔装饰线 ---- */
+@keyframes penDrawIn {
+  0% { opacity: 0; transform: translate(-20px, 20px) scale(0.5) rotate(-15deg); }
+  60% { opacity: 1; transform: translate(2px, -2px) scale(1.05) rotate(2deg); }
+  100% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+}
+@keyframes penGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(255,255,255,0.15)); }
+  50% { filter: drop-shadow(0 0 12px rgba(255,255,255,0.35)) drop-shadow(0 0 20px rgba(168,130,255,0.15)); }
+}
+@keyframes penBreathe {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(1.5deg); }
+}
+.composite-pen {
+  bottom: 30px; left: -25px; width: 80px; height: auto;
+  z-index: 5;
+  animation: penDrawIn 0.8s cubic-bezier(0.22,1,0.36,1) 1.6s both;
+}
+.composite-img-pen {
+  width: 100%; display: block;
+  animation: penGlow 3s ease-in-out infinite 2.3s,
+             penBreathe 4.5s ease-in-out infinite 2.3s;
+}
+
+/* ---- 右下角颜色方块 ---- */
+@keyframes colorPopIn {
+  0% { opacity: 0; transform: scale(0) translateY(10px); }
+  60% { opacity: 1; transform: scale(1.15) translateY(-2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes colorPulse {
+  0%, 100% { box-shadow: 0 2px 8px currentColor; }
+  50% { box-shadow: 0 2px 16px currentColor, 0 0 20px currentColor; }
+}
+.composite-color-blocks {
+  position: absolute;
+  bottom: 40px; right: 0px;
+  display: flex; gap: 6px;
+  z-index: 5;
+}
+.color-block {
+  width: 26px; height: 26px; border-radius: 4px;
+  animation: colorPopIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 1.8s both,
+             colorPulse 3s ease-in-out infinite 2.3s;
+}
+.color-blue {
+  background: #2563eb; color: rgba(37,99,235,0.5);
+  animation-delay: 1.85s, 2.35s;
+}
+.color-red {
+  background: #ef4444; color: rgba(239,68,68,0.5);
+  animation-delay: 2s, 2.5s;
+}
+
+/* ---- 选中框（蚂蚁线效果） ---- */
+@keyframes antBorderMove {
+  to { stroke-dashoffset: -24; }
+}
+@keyframes cornerDotPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+@keyframes frameFadeIn {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.composite-selection-frame {
+  position: absolute;
+  top: -6px; left: 50%; transform: translateX(-50%);
+  width: 310px; height: auto;
+  z-index: 12;
+  pointer-events: none;
+  animation: frameFadeIn 0.6s ease-out 2s both;
+}
+@media (min-width: 1024px) {
+  .composite-selection-frame { width: 360px !important; }
+}
+@media (min-width: 1280px) {
+  .composite-selection-frame { width: 395px !important; }
+}
+.selection-border {
+  position: absolute; inset: 0;
+  border: 1.5px dashed #ef4444;
+  border-radius: 4px;
+  opacity: 0.65;
+}
+/* 角点手柄 */
+.corner-handle {
+  position: absolute;
+  width: 8px; height: 8px;
+  background: #fff;
+  border-radius: 1.5px;
+  box-shadow: 0 0 6px rgba(239,68,68,0.5), 0 0 0 1px #ef4444;
+  animation: cornerDotPulse 2s ease-in-out infinite;
+}
+.ch-tl { top: -4px; left: -4px; animation-delay: 2.1s; }
+.ch-tr { top: -4px; right: -4px; animation-delay: 2.2s; }
+.ch-bl { bottom: -4px; left: -4px; animation-delay: 2.3s; }
+.ch-br { bottom: -4px; right: -4px; animation-delay: 2.4s; }
+/* 边中点手柄（小圆点） */
+.edge-handle {
+  position: absolute;
+  width: 5px; height: 5px;
+  background: #ef4444;
+  border-radius: 50%;
+  opacity: 0.75;
+  animation: cornerDotPulse 2.5s ease-in-out infinite;
+}
+.eh-top { top: -2.5px; left: 50%; margin-left: -2.5px; animation-delay: 2.15s; }
+.eh-bottom { bottom: -2.5px; left: 50%; margin-left: -2.5px; animation-delay: 2.25s; }
+.eh-left { top: 50%; left: -2.5px; margin-top: -2.5px; animation-delay: 2.35s; }
+.eh-right { top: 50%; right: -2.5px; margin-top: -2.5px; animation-delay: 2.45s; }
+
+/* ---- Hover 整体交互 ---- */
+.profile-composite:hover .composite-person { animation-play-state: paused; }
+.profile-composite:hover .composite-img-person {
+  transform: scale(1.03);
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.profile-composite:hover .composite-toolbar {
+  animation-play-state: paused;
+  transform: translateY(-10px) translateX(8px) rotate(-3deg);
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.profile-composite:hover .corner-handle,
+.profile-composite:hover .edge-handle {
+  animation-duration: 0.8s;
+}
+
+/* ====== Axisform 风格 Hero 布局样式 ====== */
+.hero-card {
+  transform-origin: center;
+  will-change: transform;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+}
+.glass {
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.magnetic-button {
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), background 0.45s ease, border-color 0.45s ease;
+}
+.magnetic-button:hover {
+  transform: translateY(-2px);
+}
+.wordmark {
+  letter-spacing: -0.06em;
+  white-space: nowrap;
+}
+
+/* Hero 卡片入场动画 — 已由 GSAP 接管 */
+#heroSection .hero-card {
+  /* animation removed — GSAP controls entry */
+}
+#heroSection .hero-card:nth-child(1) { /* animation-delay removed */ }
+#heroSection .hero-card:nth-child(2) { /* animation-delay removed */ }
+#heroSection .hero-card:nth-child(3) { /* animation-delay removed */ }
+#heroSection .hero-card:nth-child(4) { /* animation-delay removed */ }
+
+@keyframes heroCardEntry {
+  0% { opacity: 0; transform: translateY(60px) scale(0.92); }
+  100% { opacity: 1; }
+}
+
+/* CTA 圆形按钮入场 — 已由 GSAP 接管 */
+#heroSection .hero-cta {
+  /* animation removed — GSAP controls entry */
+}
+@keyframes ctaPopIn {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* 大字标题微动画 — 已由 GSAP 接管 */
+#heroSection .hero-wordmark {
+  /* animation removed — GSAP controls entry */
+}
+@keyframes wordmarkReveal {
+  0% { opacity: 0; filter: blur(12px); transform: translateY(30px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+</style></head>
+
+<body class="h-full bg-black text-white antialiased overflow-x-hidden">
+
+<!-- 开屏加载动画 -->
+<div id="ax-loader" class="ax-loader" aria-hidden="true">
+  <div class="ax-loader__inner">
+    <div class="ax-loader__brand">
+      <span>程铭果</span><span class="ax-dot"></span>
+    </div>
+    <div class="ax-loader__track">
+      <div class="ax-loader__bar"></div>
+    </div>
+    <div class="ax-loader__meta">
+      <span class="ax-loader__pct">000</span>
+      <span>DIGITAL MEDIA ART · PORTFOLIO 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- Gradient background -->
+<div aria-hidden="true" class="pointer-events-none fixed inset-0 overflow-hidden">
+  <div class="absolute -top-40 -left-40 h-80 w-80 rounded-full bg-blue-600/20 blur-3xl opacity-0 animate-fade-in" style="animation-delay: 0.5s"></div>
+  <div class="absolute top-1/2 -right-32 h-96 w-96 rounded-full bg-purple-600/15 blur-3xl opacity-0 animate-fade-in" style="animation-delay: 0.8s"></div>
+  <div class="absolute bottom-0 left-1/2 h-72 w-72 rounded-full bg-indigo-600/10 blur-3xl opacity-0 animate-fade-in" style="animation-delay: 1.2s"></div>
+</div>
+
+<!-- Status indicator -->
+<div class="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden xl:block opacity-0 animate-fade-in" style="animation-delay:1.8s">
+  <div class="inline-flex gap-3 hover:shadow-green-500/20 transition-all duration-500 group cursor-pointer relative overflow-hidden bg-black/20 border-white/30 border rounded-full pt-3 pr-6 pb-3 pl-6 shadow-2xl backdrop-blur-3xl items-center" style="background:linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05));backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px)">
+    <div class="absolute inset-0 opacity-50 bg-gradient-to-br from-white/20 via-transparent to-black/20 rounded-full"></div>
+    <div class="absolute inset-[1px] opacity-30 bg-gradient-to-br from-white/10 to-transparent rounded-full shadow backdrop-blur-none"></div>
+    <div class="relative flex items-center gap-3">
+      <div class="relative flex h-3 w-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-400 shadow-lg animate-pulse-glow"></span>
+      </div>
+      <span class="text-sm font-semibold bg-gradient-to-r from-green-400 via-white to-gray-300 bg-clip-text text-transparent whitespace-nowrap tracking-wide font-geist">开放项目合作</span>
+      <div class="transform transition-transform duration-300 group-hover:translate-x-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-400"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+      </div>
+    </div>
+  </div>
+  <div class="absolute top-1/2 -left-8 w-6 h-px bg-gradient-to-l from-white/30 to-transparent transform -translate-y-1/2"></div>
+</div>
+
+<!-- Navigation -->
+<header class="fixed top-0 left-0 right-0 z-40 opacity-0 animate-fade-in my-4 backdrop-blur-3xl" style="animation-delay:0.2s">
+  <div class="relative max-w-7xl lg:px-8 ring-1 ring-white/10 bg-white/10 border-white/20 border rounded-2xl mr-auto ml-auto pr-6 pl-6 shadow-lg backdrop-blur-lg">
+    <div class="flex h-20 items-center justify-between">
+      <a href="#" class="group">
+        <div class="flex items-center gap-2">
+          <div class="group-hover:bg-white/20 transition-colors bg-white/15 border-white/30 border rounded-xl pt-2 pr-3 pb-2 pl-3 backdrop-blur-md">
+            <span class="block text-lg font-semibold tracking-tight font-geist">程铭果</span>
+          </div>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#work" class="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 font-geist">作品</a>
+        <a href="#about" class="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 font-geist">关于</a>
+        <a href="#process" class="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 font-geist">流程</a>
+        <a href="#services" class="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 font-geist">能力</a>
+      </nav>
+      <a href="#contact" class="hidden md:inline-flex items-center gap-2 rounded-full bg-white/90 text-black px-5 py-2.5 text-sm font-semibold hover:bg-white transition-all duration-200 hover:scale-105 backdrop-blur-md shadow-lg font-geist">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        联系我
+      </a>
+      <button id="menuBtn" class="md:hidden rounded-xl bg-white/15 border border-white/30 p-2.5 text-white hover:bg-white/20 backdrop-blur-md">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileNav" class="hidden md:hidden absolute top-full left-0 right-0 bg-black/80 backdrop-blur-xl border-b border-white/20 rounded-b-2xl shadow-lg ring-1 ring-white/10">
+      <div class="px-6 py-6 space-y-4">
+        <a href="#work" class="block rounded-xl px-4 py-3 text-base font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors font-geist">作品</a>
+        <a href="#about" class="block rounded-xl px-4 py-3 text-base font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors font-geist">关于</a>
+        <a href="#process" class="block rounded-xl px-4 py-3 text-base font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors font-geist">流程</a>
+        <a href="#services" class="block rounded-xl px-4 py-3 text-base font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors font-geist">能力</a>
+        <div class="pt-4 border-t border-white/20">
+          <a href="#contact" class="flex items-center justify-center gap-2 rounded-xl bg-white/90 text-black px-6 py-3 text-base font-semibold backdrop-blur-md shadow-lg font-geist">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            联系我
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section — Axisform Style -->
+<section id="heroSection" class="relative lg:pt-40 lg:pb-28 overflow-hidden pt-32 pb-20">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="text-center">
+
+      <!-- 圆形头像 -->
+      <div class="mb-10 flex justify-center opacity-0 animate-scale-in" style="animation-delay: 0.8s">
+        <div class="hero-avatar-wrapper relative group cursor-pointer">
+          <!-- 悬停光环 -->
+          <div class="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500/30 to-pink-500/20 blur-xl scale-150 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out"></div>
+          <img alt="程铭果" class="hero-avatar h-36 w-36 md:h-44 md:w-44 rounded-full object-cover ring-4 ring-white/20 shadow-2xl relative z-10 transition-all duration-500 ease-out group-hover:ring-purple-400/60 group-hover:shadow-[0_0_40px_rgba(167,139,250,0.3)] group-hover:scale-110 group-hover:-rotate-3" src="./touxiang/avatar-hero.jpg">
+          <!-- 点击波纹 -->
+          <div class="avatar-ripple absolute inset-0 rounded-full border-2 border-purple-400/0 z-20 pointer-events-none"></div>
+        </div>
+      </div>
+
+      <!-- 大标题：逐字母动画 + 悬停效果 -->
+      <div class="opacity-0 animate-slide-up hero-title-wrap" style="animation-delay: 1s">
+        <h1 id="heroHeadline" class="lg:text-7xl xl:text-8xl text-5xl font-bold text-white tracking-tight font-geist letter-animated-title cursor-default">程铭果</h1>
+      </div>
+
+      <!-- 副标题介绍 -->
+      <div class="opacity-0 animate-slide-up" style="animation-delay: 1.2s">
+        <p class="mt-6 max-w-3xl mx-auto text-xl lg:text-2xl text-gray-400 leading-relaxed font-geist tracking-tight font-light">
+          数字媒体艺术专业2026届学生，专注于UI/UX界面设计、平面视觉与AI辅助创作，致力于用设计传递价值。
+        </p>
+      </div>
+
+      <!-- 项目标签 -->
+      <div class="mt-8 flex justify-start max-w-3xl mx-auto opacity-0 animate-slide-up" style="animation-delay: 1.25s">
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm px-5 py-2 text-xs font-medium text-gray-400 font-geist hover:bg-white/10 transition-colors cursor-pointer group">
+          <span class="w-2 h-2 rounded-full bg-green-500 shadow-lg shadow-green-500/50"></span>
+          for projects
+          <span class="text-white">可用于项目</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+        </span>
+      </div>
+
+      <!-- 按钮 -->
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-slide-up" style="animation-delay: 1.4s">
+        <a href="#work" class="hero-btn-primary group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white text-black px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-105 active:scale-95 font-geist shadow-lg shadow-black/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+          <!-- 点击涟漪容器 -->
+          <span class="btn-ripple absolute inset-0 overflow-hidden rounded-full pointer-events-none"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+          <span class="relative z-10">View my work</span>
+          <span class="text-xs text-gray-500 hidden sm:inline relative z-10">查看我的作品</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 group-hover:translate-x-1.5 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="#about" class="hero-btn-secondary group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-white px-8 py-4 text-base font-medium transition-all duration-300 hover:scale-105 hover:bg-white/15 active:scale-95 font-geist hover:shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:border-white/35">
+          <span class="btn-ripple absolute inset-0 overflow-hidden rounded-full pointer-events-none"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 transition-transform duration-300 group-hover:rotate-12"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span class="relative z-10">About me</span>
+          <span class="text-xs text-gray-500 hidden sm:inline relative z-10">关于我</span>
+        </a>
+      </div>
+
+      <!-- 数据统计 -->
+      <div class="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto opacity-0 animate-fade-in" style="animation-delay: 1.6s">
+        <div class="hero-stat text-center py-4 px-2 rounded-2xl transition-all duration-500 cursor-default hover:-translate-y-2 hover:bg-white/[0.04] group">
+          <div class="text-2xl lg:text-3xl text-white font-geist tracking-tight font-light transition-colors duration-300 group-hover:text-gray-300">数字媒体</div>
+          <div class="text-sm text-gray-400 mt-1 font-geist transition-colors duration-300 group-hover:text-gray-300">专业方向</div>
+        </div>
+        <div class="hero-stat text-center py-4 px-2 rounded-2xl transition-all duration-500 cursor-default hover:-translate-y-2 hover:bg-white/[0.04] group">
+          <div class="text-2xl lg:text-3xl text-white font-geist tracking-tight font-light transition-colors duration-300 group-hover:text-gray-300">UI / UX</div>
+          <div class="text-sm text-gray-400 mt-1 font-geist transition-colors duration-300 group-hover:text-gray-300">核心领域</div>
+        </div>
+        <div class="hero-stat text-center py-4 px-2 rounded-2xl transition-all duration-500 cursor-default hover:-translate-y-2 hover:bg-white/[0.04] group">
+          <div class="text-2xl lg:text-3xl text-white font-geist tracking-tight font-light transition-colors duration-300 group-hover:text-gray-300">AI 辅助</div>
+          <div class="text-sm text-gray-400 mt-1 font-geist transition-colors duration-300 group-hover:text-gray-300">设计工具</div>
+        </div>
+      </div>
+
+      <!-- 右侧装饰圆形（跟随鼠标视差） -->
+      <div aria-hidden="true" class="hero-deco-circle absolute -bottom-20 -right-20 h-[320px] w-[320px] md:h-[420px] md:w-[420px] lg:h-[520px] lg:w-[520px] rounded-full bg-gradient-to-br from-white/[0.07] to-white/[0.02] blur-[1px] pointer-events-none transition-transform duration-700 ease-out"></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- 工具技能走马灯 -->
+<section class="border-y opacity-0 animate-fade-in border-white/10 pt-16 pb-16 overflow-hidden" style="animation-delay:1.8s">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <p class="text-center text-sm font-medium text-gray-500 mb-8 font-geist">常用设计工具与平台</p>
+    <div class="relative overflow-hidden">
+      <div class="flex animate-marquee whitespace-nowrap">
+        <div class="flex items-center justify-center gap-16 lg:gap-20 mx-8">
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Figma</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Photoshop</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">After Effects</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Chat GPT</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">即梦</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Work Buddy</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">即时设计</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Illustrator</div>
+        </div>
+        <div class="flex items-center justify-center gap-16 lg:gap-20 mx-8">
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Figma</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Photoshop</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">After Effects</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Chat GPT</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">即梦</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Work Buddy</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">即时设计</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Illustrator</div>
+        </div>
+        <div class="flex items-center justify-center gap-16 lg:gap-20 mx-8">
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Figma</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Photoshop</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">After Effects</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Chat GPT</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">即梦</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Work Buddy</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">即时设计</div>
+          <div class="text-gray-400 text-lg font-medium tracking-tight hover:text-gray-300 transition-colors font-geist">Illustrator</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 核心能力 -->
+<section id="services" class="pt-24 pb-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl lg:text-5xl text-white opacity-0 animate-slide-up font-geist tracking-tight font-light" style="animation-delay:2s">我的能力</h2>
+      <p class="mt-4 text-xl text-gray-400 opacity-0 animate-slide-up font-geist" style="animation-delay:2.2s">数字媒体艺术（交互方向）· 覆盖 UI/UX · 平面视觉 · AI 辅助</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- 能力1: UI/UX -->
+      <div class="group rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/10 p-8 hover:from-white/15 hover:to-white/10 transition-all duration-500 hover:scale-105 opacity-0 animate-scale-in" style="animation-delay:2.4s">
+        <h3 class="text-2xl text-white mb-4 font-geist tracking-tight font-light">UI/UX 界面设计</h3>
+        <p class="text-gray-400 leading-relaxed mb-6 font-geist">从用户研究到高保真原型，打造兼具功能与美感的数字产品体验。</p>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>用户调研与人物画像</li>
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>信息架构与线框图</li>
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>高保真原型与动效</li>
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>可用性测试与迭代</li>
+        </ul>
+      </div>
+      <!-- 能力2: 平面视觉 -->
+      <div class="group rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/10 p-8 hover:from-white/15 hover:to-white/10 transition-all duration-500 hover:scale-105 opacity-0 animate-scale-in" style="animation-delay:2.6s">
+        <h3 class="text-2xl text-white mb-4 font-geist tracking-tight font-light">平面视觉设计</h3>
+        <p class="text-gray-400 leading-relaxed mb-6 font-geist">海报、宣传页、画册与品牌视觉，用视觉语言讲好每一个故事。</p>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>海报设计与视觉传达</li>
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>宣传册/画册排版</li>
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>品牌视觉系统</li>
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>PVC喷绘与展板输出</li>
+        </ul>
+      </div>
+      <!-- 能力3: AI辅助 -->
+      <div class="group rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/10 p-8 hover:from-white/15 hover:to-white/10 transition-all duration-500 hover:scale-105 opacity-0 animate-scale-in" style="animation-delay:2.8s">
+        <h3 class="text-2xl text-white mb-4 font-geist tracking-tight font-light">AI 工具辅助设计</h3>
+        <p class="text-gray-400 leading-relaxed mb-6 font-geist">将 AI 融入设计工作流，从创意生成到视觉落地，提升效率与表现力。</p>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>需求结构化梳理，精准撰写 AI 提示词</li>
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>AI 驱动视觉或源码批量生成</li>
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>多轮迭代校验，优化 AI 输出成果</li>
+          <li class="flex items-center gap-3 font-geist"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-400"><path d="M20 6 9 17l-5-5"/></svg>成果整合验收与项目标准化归档</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 精选作品 -->
+<section id="work" class="pt-24 pb-24">
+  <div class="max-w-7xl lg:px-8 mr-auto ml-auto pr-6 pl-6">
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <h2 class="text-3xl lg:text-4xl text-white opacity-0 animate-slide-up font-geist tracking-tight font-light" style="animation-delay:3s">项目与作品</h2>
+        <p class="mt-2 text-gray-400 font-geist text-base">UI/UX · 平面海报 · 宣传册 · AI 辅助设计</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Project 1: 舒心养老服务 -->
+      <article onclick="openProjectModal('oldcare')" class="cursor-pointer group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] opacity-0 animate-scale-in" style="animation-delay:3.4s">
+        <div class="relative aspect-[16/10] work-img-container">
+          <img class="h-full w-full object-cover" src="./yanglao/1.png" alt="舒心养老服务响应系统">
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+          <div class="absolute left-2 right-2 bottom-2">
+            <div class="flex bg-white/10 border-white/10 border rounded-xl mx-2 my-2 pt-4 pr-4 pb-4 pl-4 backdrop-blur-xl items-center justify-between">
+              <span class="text-sm font-medium text-white font-geist">舒心养老服务响应系统</span>
+              <span class="text-[10px] tracking-wider text-gray-300 uppercase font-geist">UI/UX · 三端协同</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2: IF-ONLY -->
+      <article onclick="openProjectModal('ifonly')" class="cursor-pointer group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] opacity-0 animate-scale-in" style="animation-delay:3.6s">
+        <div class="relative aspect-[16/10] work-img-container">
+          <img class="h-full w-full object-cover" src="./if/1.png" alt="IF-ONLY VR体验系统">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute left-2 right-2 bottom-2">
+            <div class="flex bg-white/10 border-white/10 border rounded-xl mx-2 my-2 pt-4 pr-4 pb-4 pl-4 backdrop-blur-xl items-center justify-between">
+              <span class="text-sm font-medium text-white font-geist">IF-ONLY 虚拟体验</span>
+              <span class="text-[10px] tracking-wider text-gray-300 uppercase font-geist">VR · UI/UX</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3: 数智润乡·情暖银龄 -->
+      <article onclick="openProjectModal('poster')" class="cursor-pointer group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] opacity-0 animate-scale-in" style="animation-delay:3.8s">
+        <div class="relative aspect-[16/10] work-img-container">
+          <img class="h-full w-full object-cover" src="./anyangyiyang/1.png" alt="数智润乡·情暖银龄">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute left-2 right-2 bottom-2">
+            <div class="flex bg-white/10 border-white/10 border rounded-xl mx-2 my-2 pt-4 pr-4 pb-4 pl-4 backdrop-blur-xl items-center justify-between">
+              <span class="text-sm font-medium text-white font-geist">数智润乡 · 情暖银龄</span>
+              <span class="text-[10px] tracking-wider text-gray-300 uppercase font-geist">医养平台 · 服务设计</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 4: 宣传册 -->
+      <article onclick="openProjectModal('brochure')" class="cursor-pointer group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 hover:scale-[1.02] opacity-0 animate-scale-in" style="animation-delay:4s">
+        <div class="relative aspect-[16/10] work-img-container">
+          <img class="h-full w-full object-cover" src="./zuopinfengmian/fengmian.png" alt="其他视觉作品">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute left-2 right-2 bottom-2">
+            <div class="flex bg-white/10 border-white/10 border rounded-xl mx-2 my-2 pt-4 pr-4 pb-4 pl-4 backdrop-blur-xl items-center justify-between">
+              <span class="text-sm font-medium text-white font-geist">其他视觉作品</span>
+              <span class="text-[10px] tracking-wider text-gray-300 uppercase font-geist">排版 · 物料</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- AI 小程序开发项目 -->
+<section id="ai-miniprogram" class="pt-24 pb-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="relative mb-12 text-center">
+      <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2 h-12 w-[560px] rounded-full bg-gradient-to-r from-white/[0.04] via-white/[0.07] to-white/[0.04] blur-2xl"></div>
+      <p class="text-xs font-bold uppercase tracking-[0.25em] text-gray-500 mb-3 font-geist">AI 驱动 · 全流程生成</p>
+      <h2 class="relative text-4xl lg:text-5xl text-white font-geist tracking-tight font-light">AI 小程序<span class="text-gray-300">开发项目</span></h2>
+    </div>
+
+    <!-- ===== 一级页面：项目概览卡片 ===== -->
+    <div id="ai-mp-level1" class="block">
+      <!-- 大卡片 -->
+      <button onclick="openAIMPDetail()" class="group relative w-full rounded-[28px] bg-black/40 border border-white/10 hover:border-white/20 backdrop-blur-xl shadow-2xl overflow-hidden transition-all duration-500 hover:scale-[1.01] cursor-pointer text-left p-6 lg:p-10">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-[28px] bg-gradient-to-b from-white/[0.04] to-transparent"></div>
+        <div aria-hidden="true" class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[28px]" style="background: radial-gradient(600px circle at var(--mouse-x,50%) var(--mouse-y,50%), rgba(255,255,255,0.04), transparent 60%)"></div>
+
+        <div class="relative grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-center">
+          <!-- 左侧：预览图组 -->
+          <div class="lg:col-span-2 flex gap-3">
+            <div class="flex-1 aspect-[9/19.5] rounded-xl overflow-hidden ring-1 ring-white/10 group-hover:ring-white/30 transition-all">
+              <img src="./aixiaochengxu/1dd1ce5b5ea6008fb0345579cb1239a8.png" alt="小程序首页" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+            </div>
+            <div class="flex-1 hidden sm:block aspect-[9/19.5] rounded-xl overflow-hidden ring-1 ring-white/10 group-hover:ring-white/30 transition-all">
+              <img src="./aixiaochengxu/2001f673704b6287dff44a1a0a6b687f.png" alt="虚拟逛庙会" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+            </div>
+            <div class="flex-1 hidden md:block aspect-[9/19.5] rounded-xl overflow-hidden ring-1 ring-white/10 group-hover:ring-white/30 transition-all relative">
+              <img src="./aixiaochengxu/6f403f153f6fe12f9c31e75dae73575d.png" alt="AI创意工坊" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+              <!-- 更多遮罩 -->
+              <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                <span class="text-xs text-white/80 font-geist">+ 更多</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右侧：信息 -->
+          <div class="lg:col-span-3 space-y-4">
+            <div class="flex items-start gap-3">
+              <span class="w-9 h-9 rounded-lg bg-white/[0.06] flex items-center justify-center text-base shrink-0 mt-0.5">🤖</span>
+              <div>
+                <h3 class="text-xl lg:text-2xl text-white font-geist tracking-tight font-light mb-1">太昊陵伏羲文化 · 微信小程序</h3>
+                <p class="text-sm text-gray-400 font-geist leading-relaxed">一款由 AI 全程独立生成源代码的文化传播应用，本人负责需求梳理、风格定义、审核验收。涵盖数字百科、AR 庙会体验、AI 创意工坊、虚拟逛庙会等核心功能模块。</p>
+              </div>
+            </div>
+
+            <!-- 标签栏 -->
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-gray-300 text-xs font-geist">微信原生</span>
+              <span class="px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-gray-300 text-xs font-geist">WXML / WXSS</span>
+              <span class="px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-gray-300 text-xs font-geist">JavaScript</span>
+              <span class="px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-gray-300 text-xs font-geist">云开发</span>
+              <span class="px-3 py-1 rounded-full bg-white/[0.08] border border-white/20 text-gray-200 text-xs font-geist flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4Z"/><path d="M16 14a4 4 0 0 1-8 0"/><path d="M12 18v4"/><path d="m9 22 3-3 3 3"/></svg> AI 全程辅助</span>
+            </div>
+
+            <!-- 查看详情按钮 -->
+            <div class="pt-2">
+              <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.06] border border-white/20 text-gray-300 text-sm font-geist font-medium group-hover:bg-white/[0.10] group-hover:border-white/30 transition-all duration-300">
+                查看完整项目详情
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <!-- ===== 二级页面：项目详细内容（默认隐藏） ===== -->
+    <div id="ai-mp-level2" class="hidden">
+      <!-- 返回按钮 + 标题 -->
+      <div class="mb-6 flex items-center gap-3">
+        <button onclick="backToAIMPLevel1()" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gray-300 transition-colors font-geist group">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200 group-hover:-translate-x-1"><path d="M12 5V1L7 6l5 5V7"/><path d="M12 5v14"/><path d="M19 12c0 1.7-.7 3.3-1.9 4.4"/></svg>
+          返回概览
+        </button>
+        <span class="text-gray-500 text-xs font-geist">|</span>
+        <span class="text-gray-400 text-sm font-geist">太昊陵伏羲文化 · 微信小程序</span>
+      </div>
+
+      <div class="relative lg:p-12 bg-black/40 border border-white/10 rounded-[32px] p-8 backdrop-blur-xl shadow-2xl">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-[32px] bg-gradient-to-b from-white/[0.04] to-transparent"></div>
+
+        <!-- 项目简介 -->
+        <div class="relative mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-white/[0.06] flex items-center justify-center text-sm">🤖</span>
+            <h3 class="text-xl lg:text-2xl text-white font-geist tracking-tight font-light">项目简介</h3>
+          </div>
+          <div class="rounded-2xl bg-white/[0.05] border border-white/10 p-6 lg:p-8">
+            <p class="text-gray-300 leading-relaxed font-geist text-base lg:text-lg mb-4">
+              本小程序是一款以<strong class="text-gray-200">太昊陵伏羲文化</strong>为主题的文化传播应用，涵盖数字百科、AR 庙会体验、AI 创意工坊、虚拟逛庙会等核心功能模块。
+            </p>
+            <div class="rounded-xl bg-gradient-to-r from-white/[0.06] to-white/[0.04] border border-white/10 p-5 mt-4">
+              <p class="text-gray-300 text-sm lg:text-base leading-relaxed font-geist">
+                ⚡ <strong class="text-gray-200">核心亮点：</strong>本小程序从 UI 界面设计、页面组件搭建、业务逻辑编写到完整可执行源代码均由 AI 全程独立生成；本人仅负责梳理产品功能需求、定义视觉设计风格、审核 AI 输出内容的风格合规性，仅做少量细节微调与项目整体成果验收工作。这是一个完整的「人机协同」创作实践案例——人类负责创意与把控，AI 负责执行与落地。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 技术栈 -->
+        <div class="mb-10 relative">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-white/[0.06] flex items-center justify-center text-sm">⚙️</span>
+            <h3 class="text-xl lg:text-2xl text-white font-geist tracking-tight font-light">技术栈</h3>
+          </div>
+          <div class="rounded-2xl bg-white/[0.05] border border-white/10 p-6 space-y-4">
+            <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 text-gray-300 text-sm font-geist font-medium">微信小程序原生开发</span>
+                <span class="px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 text-gray-300 text-sm font-geist font-medium">WXML / WXSS</span>
+                <span class="px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 text-gray-300 text-sm font-geist font-medium">JavaScript ES6+</span>
+                <span class="px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 text-gray-300 text-sm font-geist font-medium">WeChat API</span>
+                <span class="px-4 py-2 rounded-full bg-white/[0.06] border border-white/15 text-gray-300 text-sm font-geist font-medium">云开发（云函数/数据库）</span>
+                <span class="px-4 py-2 rounded-full bg-white/[0.08] border border-white/20 text-gray-200 text-sm font-geist font-medium flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4Z"/><path d="M16 14a4 4 0 0 1-8 0"/><path d="M12 18v4"/><path d="m9 22 3-3 3 3"/></svg> AI 全程辅助</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 作品截图展示 -->
+        <div class="mb-10 relative">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-white/[0.06] flex items-center justify-center text-sm">📸</span>
+            <h3 class="text-xl lg:text-2xl text-white font-geist tracking-tight font-light">作品截图展示</h3>
+          </div>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="group rounded-2xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer transition-all duration-500 hover:border-white/30 hover:scale-[1.03]" onclick="openLightbox('./aixiaochengxu/1dd1ce5b5ea6008fb0345579cb1239a8.png')">
+              <div class="aspect-[9/19.5] overflow-hidden rounded-xl">
+                <img src="./aixiaochengxu/1dd1ce5b5ea6008fb0345579cb1239a8.png" alt="首页 - 探索发现" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+              </div>
+              <p class="text-xs text-gray-400 text-center mt-2 font-geist group-hover:text-gray-300 transition-colors">首页 · 探索发现</p>
+            </div>
+            <div class="group rounded-2xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer transition-all duration-500 hover:border-white/30 hover:scale-[1.03]" onclick="openLightbox('./aixiaochengxu/2001f673704b6287dff44a1a0a6b687f.png')">
+              <div class="aspect-[9/19.5] overflow-hidden rounded-xl">
+                <img src="./aixiaochengxu/2001f673704b6287dff44a1a0a6b687f.png" alt="虚拟逛庙会" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+              </div>
+              <p class="text-xs text-gray-400 text-center mt-2 font-geist group-hover:text-gray-300 transition-colors">虚拟逛庙会</p>
+            </div>
+            <div class="group rounded-2xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer transition-all duration-500 hover:border-white/30 hover:scale-[1.03]" onclick="openLightbox('./aixiaochengxu/6f403f153f6fe12f9c31e75dae73575d.png')">
+              <div class="aspect-[9/19.5] overflow-hidden rounded-xl">
+                <img src="./aixiaochengxu/6f403f153f6fe12f9c31e75dae73575d.png" alt="AI创意工坊" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+              </div>
+              <p class="text-xs text-gray-400 text-center mt-2 font-geist group-hover:text-gray-300 transition-colors">AI 创意工坊</p>
+            </div>
+            <div class="group rounded-2xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer transition-all duration-500 hover:border-white/30 hover:scale-[1.03]" onclick="openLightbox('./aixiaochengxu/b90e7511418ef40ab5d1668236039511.png')">
+              <div class="aspect-[9/19.5] overflow-hidden rounded-xl">
+                <img src="./aixiaochengxu/b90e7511418ef40ab5d1668236039511.png" alt="文化百科" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+              </div>
+              <p class="text-xs text-gray-400 text-center mt-2 font-geist group-hover:text-gray-300 transition-colors">文化百科</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目开发说明：AI 生成流程 -->
+        <div class="relative">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-white/[0.06] flex items-center justify-center text-sm">🔄</span>
+            <h3 class="text-xl lg:text-2xl text-white font-geist tracking-tight font-light">项目开发说明 — AI 协同流程</h3>
+          </div>
+          <div class="rounded-2xl bg-white/[0.04] border border-white/10 p-6 lg:p-8">
+            <div class="space-y-6">
+              <div class="relative flex gap-5">
+                <div class="flex flex-col items-center">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center text-white text-sm font-bold font-geist shrink-0 shadow-lg shadow-black/20">1</div>
+                  <div class="w-0.5 h-full bg-gradient-to-b from-white/[0.1] to-transparent mt-2 absolute top-10 left-[19px]"></div>
+                </div>
+                <div class="flex-1 pb-6">
+                  <div class="flex items-center gap-2 mb-2">
+                    <h4 class="text-white font-geist font-medium text-base">需求结构化 & 提示词工程</h4>
+                    <span class="px-2 py-0.5 rounded-full bg-white/[0.06] text-gray-300 text-[11px] font-geist border border-white/15">人工主导</span>
+                  </div>
+                  <p class="text-gray-400 text-sm font-geist leading-relaxed">梳理产品功能模块（首页探索/AR体验/AI工坊/文化百科），定义信息架构与交互逻辑，将需求拆解为精准的 AI 提示词（Prompt）。</p>
+                </div>
+              </div>
+
+              <div class="relative flex gap-5">
+                <div class="flex flex-col items-center">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center text-white text-sm font-bold font-geist shrink-0 shadow-lg shadow-black/20">2</div>
+                  <div class="w-0.5 h-full bg-gradient-to-b from-white/[0.1] to-transparent mt-2 absolute top-10 left-[19px]"></div>
+                </div>
+                <div class="flex-1 pb-6">
+                  <div class="flex items-center gap-2 mb-2">
+                    <h4 class="text-white font-geist font-medium text-base">AI 视觉设计 & 界面生成</h4>
+                    <span class="px-2 py-0.5 rounded-full bg-white/[0.06] text-gray-300 text-[11px] font-geist border border-white/15">AI 主导</span>
+                  </div>
+                  <p class="text-gray-400 text-sm font-geist leading-relaxed">定义视觉风格关键词（中式典雅/暖棕色调/圆角卡片/渐变装饰），由 AI 根据提示词批量输出 WXML/WXSS 页面结构与样式代码。</p>
+                </div>
+              </div>
+
+              <div class="relative flex gap-5">
+                <div class="flex flex-col items-center">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center text-white text-sm font-bold font-geist shrink-0 shadow-lg shadow-black/20">3</div>
+                  <div class="w-0.5 h-full bg-gradient-to-b from-white/[0.1] to-transparent mt-2 absolute top-10 left-[19px]"></div>
+                </div>
+                <div class="flex-1 pb-6">
+                  <div class="flex items-center gap-2 mb-2">
+                    <h4 class="text-white font-geist font-medium text-base">AI 业务逻辑 & 组件实现</h4>
+                    <span class="px-2 py-0.5 rounded-full bg-white/[0.06] text-gray-300 text-[11px] font-geist border border-white/15">AI 主导</span>
+                  </div>
+                  <p class="text-gray-400 text-sm font-geist leading-relaxed">AI 自动编写页面跳转路由、数据绑定、事件处理、API 调用等完整 JavaScript 业务逻辑，实现可运行的源代码。</p>
+                </div>
+              </div>
+
+              <div class="relative flex gap-5">
+                <div class="flex flex-col items-center">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center text-white text-sm font-bold font-geist shrink-0 shadow-lg shadow-black/20">4</div>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <h4 class="text-white font-geist font-medium text-base">审核验收 & 细节微调</h4>
+                    <span class="px-2 py-0.5 rounded-full bg-white/[0.06] text-gray-300 text-[11px] font-geist border border-white/15">人工主导</span>
+                  </div>
+                  <p class="text-gray-400 text-sm font-geist leading-relaxed">逐页审查 AI 输出的视觉还原度与交互流畅性，对不符合设计规范的部分提出修改指令并做少量手动微调，最终完成部署验收。</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 rounded-xl bg-gradient-to-r from-white/[0.06] to-white/[0.04] border border-white/10 p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <span class="text-2xl">💡</span>
+              <div>
+                <p class="text-gray-300 text-sm font-geist leading-relaxed">
+                  <strong>总结：</strong>这个项目的核心价值不在于小程序本身的功能复杂度，而在于它验证了一套<strong class="text-gray-200">「需求→提示词→AI 产出→人工审核→迭代优化」</strong>的完整人机协同创作流程。作为设计者，角色从「执行者」转向了「导演」——把控方向、定义标准、验收成果。这正是 AI 时代创作者的核心能力。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-[32px] ring-1 ring-white/10"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="pt-24 pb-24">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="relative mb-16 text-center">
+      <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2 h-12 w-[560px] rounded-full bg-gradient-to-r from-white/5 via-white/25 to-white/5 blur-2xl"></div>
+      <h2 class="relative text-4xl lg:text-5xl text-white font-geist tracking-tight font-light">关于<span class="text-white/80 font-geist tracking-tight font-light">我</span></h2>
+    </div>
+
+    <div class="relative lg:p-12 bg-black/40 border-white/10 border rounded-[32px] p-8 backdrop-blur-xl shadow-2xl">
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-[32px] bg-gradient-to-b from-white/10 to-transparent"></div>
+
+      <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <!-- Left: images -->
+        <div class="relative space-y-6">
+          <div class="rounded-3xl group p-3 cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:bg-zinc-800/60 hover:shadow-xl bg-zinc-900/80 border-zinc-800 border shadow-2xl">
+            <div class="about-main-img-container rounded-2xl ring-1 ring-white/10">
+              <img alt="程铭果" class="object-cover w-full h-[400px] lg:h-[480px]" src="./touxiang/avatar-about.jpg">
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-3 shadow-lg hover:bg-white/10 transition-all duration-300 group cursor-pointer">
+              <div class="overflow-hidden rounded-xl ring-1 ring-white/10">
+                <img alt="情绪版" class="object-cover w-full h-28 lg:h-36 transition-transform duration-500 group-hover:scale-105" src="./shenmeisucai/weixindongtaibeijingtu.jpg">
+              </div>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-3 shadow-lg hover:bg-white/10 transition-all duration-300 group cursor-pointer">
+              <div class="overflow-hidden rounded-xl ring-1 ring-white/10">
+                <img alt="设计风格" class="object-cover w-full h-28 lg:h-36 transition-transform duration-500 group-hover:scale-105" src="./shenmeisucai/yonghuhuaxiang.jpg">
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-3 shadow-lg hover:bg-white/10 transition-all duration-300 group cursor-pointer">
+              <div class="overflow-hidden rounded-xl ring-1 ring-white/10">
+                <img alt="用户画像" class="object-cover w-full h-28 lg:h-36 transition-transform duration-500 group-hover:scale-105" src="./shenmeisucai/xingkongsucai.jpg">
+              </div>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-3 shadow-lg hover:bg-white/10 transition-all duration-300 group cursor-pointer">
+              <div class="overflow-hidden rounded-xl ring-1 ring-white/10">
+                <img alt="产品架构" class="object-cover w-full h-28 lg:h-36 transition-transform duration-500 group-hover:scale-105" src="./shenmeisucai/zhaoruqingsi.jpg">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: content -->
+        <div class="relative space-y-8">
+          <div class="space-y-4">
+            <h3 class="text-2xl lg:text-3xl text-white font-geist tracking-tight font-light">关于程铭果</h3>
+            <div class="w-16 h-0.5 bg-gradient-to-r from-white/60 to-transparent"></div>
+          </div>
+          <div class="space-y-8">
+            <div class="rounded-2xl bg-white/10 border border-white/10 p-6 lg:p-8 text-gray-300 text-base lg:text-lg leading-relaxed hover:bg-white/[0.12] transition-colors duration-300">
+              <p class="font-geist mb-4">我是一名数字媒体艺术（交互方向）专业的学生，2026 届毕业。性格活泼外向，有亲和力，热爱艺术、绘画与游戏，具备很强的自律和学习能力。</p>
+              <p class="font-geist mb-4">我的设计领域覆盖 UI/UX 界面设计、平面视觉海报、宣传册与画册排版、PVC 喷绘输出，以及 AI 工具辅助设计全流程。从用户研究到视觉落地，从创意构思到物料输出，力求每个环节都做到专业与用心。</p>
+              <p class="font-geist">我相信设计不只是让东西好看——更重要的是解决问题、传达信息、建立连接。无论是为一款 App 打磨交互细节，还是为一场活动设计主视觉海报，我都希望能通过设计为人带来更好的体验。</p>
+            </div>
+            <ul class="space-y-4 text-gray-300">
+              <li class="flex items-start gap-4 group">
+                <span class="inline-flex items-center justify-center w-10 h-10 bg-white/20 border-white/30 border rounded-xl flex-shrink-0 group-hover:bg-white/25 transition-colors duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+                </span>
+                <div class="flex-1 pt-1"><span class="text-sm lg:text-base font-medium font-geist">数字媒体艺术（交互方向）· 2026届</span></div>
+              </li>
+              <li class="flex items-start gap-4 group">
+                <span class="inline-flex items-center justify-center w-10 h-10 bg-white/20 border-white/30 border rounded-xl flex-shrink-0 group-hover:bg-white/25 transition-colors duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg>
+                </span>
+                <div class="flex-1 pt-1"><span class="text-sm lg:text-base font-medium font-geist">期待实习与项目合作机会</span></div>
+              </li>
+              <li class="flex items-start gap-4 group">
+                <span class="inline-flex items-center justify-center w-10 h-10 bg-white/20 border-white/30 border rounded-xl flex-shrink-0 group-hover:bg-white/25 transition-colors duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
+                </span>
+                <div class="flex-1 pt-1"><span class="text-sm lg:text-base font-medium font-geist">开朗外向、善于沟通、乐于协作</span></div>
+              </li>
+            </ul>
+
+            <!-- 求职意向 -->
+            <div class="rounded-2xl bg-white/[0.04] border border-white/10 p-5 mt-4">
+              <div class="flex items-center gap-2 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                <span class="text-xs font-bold uppercase tracking-[0.15em] text-gray-500 font-geist">求职意向</span>
+              </div>
+              <p class="text-sm text-gray-300 leading-relaxed font-geist">
+                2026 届数字媒体艺术（交互）应届生，精通 UI 交互全流程设计；善用 AIGC 完成小程序界面与源码产出，独立搭建响应式作品集，兼具平面设计能力，擅长需求拆解与人机协同。
+              </p>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-gray-400 text-xs font-geist">UI / 交互设计</span>
+                <span class="px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-gray-400 text-xs font-geist">平面美工</span>
+              </div>
+            </div>
+            <div class="flex justify-start pt-4">
+              <a href="#contact" class="group inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm lg:text-base font-medium text-white hover:bg-white/15 hover:scale-105 transition-all duration-300 font-geist shadow-lg">
+                联系我
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-[32px] ring-1 ring-white/10"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="process" class="pt-24 pb-24">
+  <div class="max-w-7xl lg:px-8 mr-auto ml-auto pr-6 pl-6">
+    <div class="relative mb-12 text-center">
+      <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2 h-12 w-[560px] rounded-full bg-gradient-to-r from-white/5 via-white/25 to-white/5 blur-2xl"></div>
+      <h2 class="relative text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50 font-geist tracking-tight font-light">我的<span class="text-white/80 bg-none font-geist tracking-tight font-light">核心优势</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Card 1: 需求分析与用户洞察 -->
+      <div class="relative rounded-[28px] border border-white/10 bg-black/40 backdrop-blur-xl p-6 lg:p-8">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-[28px] bg-gradient-to-b from-white/10 to-transparent"></div>
+        <div class="relative mb-6">
+          <div class="process-card-img-container ring-1 ring-white/10 bg-white/5">
+            <img src="./zuopinfengmian/xuqiufenxi.jpg" alt="需求分析与用户洞察" class="w-full object-cover aspect-[4/3]">
+          </div>
+        </div>
+        <div class="relative">
+          <div class="mb-2 flex items-center gap-2 text-sm text-slate-400">
+            <span class="text-slate-300/90 font-geist">需求分析与用户洞察</span>
+          </div>
+          <h3 class="text-2xl text-white mb-3 font-geist tracking-tight font-light">需求分析与用户洞察</h3>
+          <p class="text-gray-300 leading-relaxed text-base font-geist">
+            开展用户调研拆解项目需求，挖掘用户痛点，锚定设计目标，为项目落地确立清晰方向。
+          </p>
+        </div>
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-[28px] ring-1 ring-white/10"></div>
+      </div>
+
+      <!-- Card 2: UI 交互视觉设计 -->
+      <div class="relative rounded-[28px] border border-white/10 bg-black/40 backdrop-blur-xl p-6 lg:p-8">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-[28px] bg-gradient-to-b from-white/10 to-transparent"></div>
+        <div class="relative mb-6">
+          <div class="process-card-img-container ring-1 ring-white/10 bg-white/5">
+            <img src="./zuopinfengmian/UIsheji.jpg" alt="UI 交互视觉设计" class="w-full object-cover aspect-[4/3]">
+          </div>
+        </div>
+        <div class="relative">
+          <div class="mb-2 flex items-center gap-2 text-sm text-slate-400">
+            <span class="text-slate-300/90 font-geist">UI 交互视觉设计</span>
+          </div>
+          <h3 class="text-2xl text-white mb-3 font-geist tracking-tight font-light">UI 交互视觉设计</h3>
+          <p class="text-gray-300 leading-relaxed text-base font-geist">
+            使用 Figma 完成原型到高保真全流程设计，搭建统一视觉体系，精细化打磨界面细节与交互体验。
+          </p>
+        </div>
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-[28px] ring-1 ring-white/10"></div>
+      </div>
+
+      <!-- Card 3: AIGC 协同高效落地 -->
+      <div class="relative rounded-[28px] border border-white/10 bg-black/40 backdrop-blur-xl p-6 lg:p-8">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-[28px] bg-gradient-to-b from-white/10 to-transparent"></div>
+        <div class="relative mb-6">
+          <div class="process-card-img-container ring-1 ring-white/10 bg-white/5">
+            <img src="./shenmeisucai/shenmeitisheng.jpg" alt="AIGC协同" class="w-full object-cover aspect-[4/3]">
+          </div>
+        </div>
+        <div class="relative">
+          <div class="mb-2 flex items-center gap-2 text-sm text-slate-400">
+            <span class="text-slate-300/90 font-geist">AIGC 协同高效落地</span>
+          </div>
+          <h3 class="text-2xl text-white mb-3 font-geist tracking-tight font-light">AIGC 协同高效落地</h3>
+          <p class="text-gray-300 leading-relaxed text-base font-geist">
+            运用 AI 工具生成视觉方案、小程序界面与可执行源码，负责风格审核、细节优化、功能迭代与项目验收。
+          </p>
+        </div>
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-[28px] ring-1 ring-white/10"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer / Contact -->
+<footer id="contact" class="relative border-white/10 border-t pt-24 pb-24">
+  <div class="max-w-7xl lg:px-8 mr-auto ml-auto pr-6 pl-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div>
+        <h2 class="text-4xl lg:text-5xl text-white mb-6 opacity-0 animate-slide-up font-geist tracking-tight font-light" style="animation-delay:5.2s">一起创造精彩</h2>
+        <p class="text-xl text-gray-400 mb-8 opacity-0 animate-slide-up font-geist" style="animation-delay:5.4s">
+          准备好合作了吗？我很乐意了解你的项目，一起探索设计可能性。
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mb-8 opacity-0 animate-slide-up" style="animation-delay:5.6s">
+          <a href="mailto:488083763@qq.com" class="inline-flex items-center gap-3 rounded-full bg-white text-black px-8 py-4 text-base font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 font-geist">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+            488083763@qq.com
+          </a>
+          <a href="#" class="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 backdrop-blur text-white px-8 py-4 text-base font-medium hover:bg-white/15 transition-all duration-300 hover:scale-105 font-geist">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+            预约沟通
+          </a>
+        </div>
+
+        <div class="flex items-center gap-4 opacity-0 animate-fade-in" style="animation-delay:5.8s">
+          <a href="javascript:openQQQR()" class="rounded-2xl bg-white/10 border border-white/20 p-3 hover:bg-white/15 transition-colors cursor-pointer">
+            <img src="./icons/qq.png" alt="QQ" class="w-5 h-5 object-contain">
+          </a>
+          <a href="javascript:openWechatQR()" class="rounded-2xl bg-white/10 border border-white/20 p-3 hover:bg-white/15 transition-colors cursor-pointer">
+            <img src="./icons/wechat.png" alt="微信" class="w-5 h-5 object-contain">
+          </a>
+        </div>
+      </div>
+
+      <div class="opacity-0 animate-fade-in" style="animation-delay:6s">
+        <div class="rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/10 p-8">
+          <h3 class="text-2xl text-white mb-6 font-geist tracking-tight font-light">快速链接</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="space-y-3">
+              <a href="#work" class="block text-gray-300 hover:text-white transition-colors font-geist">作品</a>
+              <a href="#about" class="block text-gray-300 hover:text-white transition-colors font-geist">关于</a>
+              <a href="#process" class="block text-gray-300 hover:text-white transition-colors font-geist">流程</a>
+              <a href="#services" class="block text-gray-300 hover:text-white transition-colors font-geist">能力</a>
+            </div>
+            <div class="space-y-3">
+              <a href="#" class="block text-gray-300 hover:text-white transition-colors font-geist">简历下载</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in border-white/10 border-t mt-16 pt-8 items-center justify-between" style="animation-delay:6.2s">
+      <div class="flex items-center gap-2">
+        <div class="bg-white/10 border-white/20 border rounded-xl pt-2 pr-3 pb-2 pl-3">
+          <span class="block text-lg font-semibold tracking-tight font-geist">程铭果</span>
+        </div>
+        <span class="text-sm text-gray-500 font-geist">© 2026 程铭果 · 数字媒体艺术</span>
+      </div>
+      <div class="text-sm text-gray-500 font-geist">郑州 · 全国远程</div>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <div class="fixed bottom-8 right-8 z-50 opacity-0 animate-fade-in" style="animation-delay:6.4s">
+    <button id="goToTop" class="group relative inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-white/10" aria-label="回到顶部">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 group-hover:-translate-y-0.5 transition-transform duration-300">
+        <path d="M12 19V6m-7 7l7-7 7 7"/>
+      </svg>
+    </button>
+  </div>
+</footer>
+
+<!-- ====== 项目弹窗 ====== -->
+<!-- Modal Overlay 通用样式 -->
+<style>
+.project-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
+.project-modal.active { opacity: 1; pointer-events: auto; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.modal-content { position: relative; width: 92vw; max-width: 1000px; max-height: 90vh; overflow-y: auto; background: rgba(20,20,20,0.95); border: 1px solid rgba(255,255,255,0.12); border-radius: 28px; padding: 40px 32px 32px; transform: translateY(30px) scale(0.96); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+.project-modal.active .modal-content { transform: translateY(0) scale(1); }
+.modal-close { position: sticky; top: 0; float: right; z-index: 10; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.modal-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+
+/* ===== 弹窗轮播 Slideshow ===== */
+.modal-slideshow { position: relative; margin-top: 28px; user-select: none; }
+.slideshow-track { position: relative; width: 100%; overflow: hidden; border-radius: 18px; background: rgba(0,0,0,0.4); }
+.slideshow-track img {
+  width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+  border-radius: 18px;
+  display: none;
+  cursor: zoom-in;
+  transition: opacity 0.35s ease;
+}
+.slideshow-track img.active { display: block; animation: slideFadeIn 0.35s ease; }
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* 左右翻页箭头 */
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.slide-btn:hover { background: rgba(255,255,255,0.22); transform: translateY(-50%) scale(1.08); }
+.slide-btn:active { transform: translateY(-50%) scale(0.95); }
+.slide-prev { left: 12px; }
+.slide-next { right: 12px; }
+
+/* 页码 + 进度条 */
+.slideshow-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  gap: 16px;
+}
+.slideshow-counter { font-size: 13px; color: rgba(255,255,255,0.45); font-family: 'Geist', sans-serif; white-space: nowrap; }
+.slideshow-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 1;
+}
+.slideshow-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+.slideshow-dot.active { background: #a78bfa; transform: scale(1.5); }
+.slideshow-dot:hover { background: rgba(167,139,250,0.6); }
+.slideshow-progress-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+.slideshow-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #a78bfa, #c4b5fd);
+  border-radius: 2px;
+  transition: width 0.35s ease;
+}
+
+/* 图片灯箱 */
+.lightbox { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.92); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.lightbox.active { opacity: 1; pointer-events: auto; }
+.lightbox img { max-width: 94vw; max-height: 92vh; object-fit: contain; border-radius: 12px; }
+.lightbox-close { position: absolute; top: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 26px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.lightbox-close:hover { background: rgba(255,255,255,0.25); }
+</style>
+
+<!-- Modal 1: 舒心养老服务响应系统 -->
+<div id="modal-oldcare" class="project-modal">
+  <div class="modal-backdrop" onclick="closeProjectModal('oldcare')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeProjectModal('oldcare')" aria-label="关闭">✕</button>
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-orange-400 mb-2 font-geist">校企合作 · 真实项目</p>
+    <h2 class="text-3xl lg:text-4xl font-geist tracking-tight font-light text-white mb-2">舒心养老服务响应系统</h2>
+    <p class="text-base text-gray-400 font-geist mb-1">ShuXin Elderly Care Service System · 杭州舒心养老</p>
+    <p class="text-sm text-gray-400 leading-relaxed font-geist max-w-2xl">在校期间为杭州舒心养老服务有限公司承接的真实商业项目，从用户调研、竞品分析到信息架构、界面设计全程参与。设计并落地了老人端（服务预约/健康档案/紧急求助）、商家端（订单管理/服务接单/收益统计）与社区管理端（人员调度/数据看板/资源分配）三端协同的完整产品体系，真正实现从课堂到产线的闭环实践。</p>
+    <div class="modal-slideshow" data-slideshow="oldcare">
+      <div class="slideshow-track" id="track-oldcare">
+        <img src="./yanglao/1.png" alt="养老01" class="active" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/2.png" alt="养老02" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/3.png" alt="养老03" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/4.png" alt="养老04" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/5.png" alt="养老05" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/6.png" alt="养老06" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/7.png" alt="养老07" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/8.png" alt="养老08" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/9.png" alt="养老09" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/10.png" alt="养老10" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/11.png" alt="养老11" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/12.png" alt="养老12" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/13.png" alt="养老13" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/14.png" alt="养老14" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/15.png" alt="养老15" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./yanglao/16.png" alt="养老16" onclick="openLightbox(this.src)" loading="lazy">
+      </div>
+      <button class="slide-btn slide-prev" onclick="slideMove('oldcare',-1)" aria-label="上一张">&#8592;</button>
+      <button class="slide-btn slide-next" onclick="slideMove('oldcare', 1)" aria-label="下一张">&#8594;</button>
+      <div class="slideshow-footer">
+        <span class="slideshow-counter" id="counter-oldcare">1 / 16</span>
+        <div class="slideshow-dots" id="dots-oldcare"></div>
+      </div>
+      <div class="slideshow-progress-bar"><div class="slideshow-progress-fill" id="prog-oldcare" style="width:6.25%"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2: IF-ONLY -->
+<div id="modal-ifonly" class="project-modal">
+  <div class="modal-backdrop" onclick="closeProjectModal('ifonly')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeProjectModal('ifonly')" aria-label="关闭">✕</button>
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-purple-400 mb-2 font-geist">比赛作品 · VR体验设计</p>
+    <h2 class="text-3xl lg:text-4xl font-geist tracking-tight font-light text-white mb-2">IF-ONLY</h2>
+    <p class="text-base text-gray-400 font-geist mb-1">弥补遗憾的虚拟现实体验系统</p>
+    <p class="text-sm text-gray-400 leading-relaxed font-geist max-w-2xl">比赛作品，一个让用户通过 VR+BCI（脑机接口）重新体验人生遗憾的沉浸式系统。包含完整的产品概念、交互流程设计与高保真界面，获2025年省赛三等奖。</p>
+    <div class="modal-slideshow" data-slideshow="ifonly">
+      <div class="slideshow-track" id="track-ifonly">
+        <img src="./if/1.png" alt="IF01" class="active" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/2.png" alt="IF02" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/3.png" alt="IF03" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/4.png" alt="IF04" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/5.png" alt="IF05" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/6.png" alt="IF06" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/7.png" alt="IF07" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/8.png" alt="IF08" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/9.png" alt="IF09" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/10.png" alt="IF10" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/11.png" alt="IF11" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/12.png" alt="IF12" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/13.png" alt="IF13" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/14.png" alt="IF14" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/15.png" alt="IF15" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./if/16.png" alt="IF16" onclick="openLightbox(this.src)" loading="lazy">
+      </div>
+      <button class="slide-btn slide-prev" onclick="slideMove('ifonly',-1)" aria-label="上一张">&#8592;</button>
+      <button class="slide-btn slide-next" onclick="slideMove('ifonly', 1)" aria-label="下一张">&#8594;</button>
+      <div class="slideshow-footer">
+        <span class="slideshow-counter" id="counter-ifonly">1 / 16</span>
+        <div class="slideshow-dots" id="dots-ifonly"></div>
+      </div>
+      <div class="slideshow-progress-bar"><div class="slideshow-progress-fill" id="prog-ifonly" style="width:6.25%"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 3: 数智润乡·情暖银龄 -->
+<div id="modal-poster" class="project-modal">
+  <div class="modal-backdrop" onclick="closeProjectModal('poster')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeProjectModal('poster')" aria-label="关闭">✕</button>
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-2 font-geist">实践项目 · 服务设计</p>
+    <h2 class="text-3xl lg:text-4xl font-geist tracking-tight font-light text-white mb-2">数智润乡 · 情暖银龄</h2>
+    <p class="text-base text-gray-400 font-geist mb-1">Digital Rural Elderly Care Platform · 安阳医养</p>
+    <p class="text-sm text-gray-400 leading-relaxed font-geist max-w-2xl">面向安阳农村老年群体的数智化乡村医疗养护平台设计。从用户研究、数据分析出发，构建「嵌入式平台＋分角色协同」的服务框架，涵盖康养生活服务、家庭远程视频、娱乐视听、远程医疗、大数据档案与志愿资源六大功能模块，推动乡村养老从「个体事务」向「系统治理」演进。</p>
+    <div class="modal-slideshow" data-slideshow="poster">
+      <div class="slideshow-track" id="track-poster">
+        <img src="./anyangyiyang/1.png" alt="安阳01" class="active" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/2.png" alt="安阳02" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/3.png" alt="安阳03" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/4.png" alt="安阳04" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/5.png" alt="安阳05" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/6.png" alt="安阳06" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/7.png" alt="安阳07" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/8.png" alt="安阳08" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/9.png" alt="安阳09" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/10.png" alt="安阳10" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/11.png" alt="安阳11" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/12.png" alt="安阳12" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/13.png" alt="安阳13" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="./anyangyiyang/14.png" alt="安阳14" onclick="openLightbox(this.src)" loading="lazy">
+      </div>
+      <button class="slide-btn slide-prev" onclick="slideMove('poster',-1)" aria-label="上一张">&#8592;</button>
+      <button class="slide-btn slide-next" onclick="slideMove('poster', 1)" aria-label="下一张">&#8594;</button>
+      <div class="slideshow-footer">
+        <span class="slideshow-counter" id="counter-poster">1 / 14</span>
+        <div class="slideshow-dots" id="dots-poster"></div>
+      </div>
+      <div class="slideshow-progress-bar"><div class="slideshow-progress-fill" id="prog-poster" style="width:7.14%"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 4: 其他视觉作品（分类浏览） -->
+<div id="modal-brochure" class="project-modal">
+  <div class="modal-backdrop" onclick="closeBrochureModal()"></div>
+  <div class="modal-content" style="max-width:880px">
+    <button id="brochure-close-btn" class="modal-close" aria-label="关闭">✕</button>
+
+    <!-- 一级：分类列表 -->
+    <div id="brochure-main" class="block">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-green-400 mb-2 font-geist">排版 · 物料设计</p>
+      <h2 class="text-3xl lg:text-4xl font-geist tracking-tight font-light text-white mb-1">其他视觉作品</h2>
+      <p class="text-sm text-gray-400 leading-relaxed font-geist max-w-2xl mb-6">从毕业歌会背景到学院宣传册、展墙设计与各类海报，涵盖多种视觉创作形式。</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <!-- 分类1：毕业歌会背景设计 -->
+        <div onclick="openBrochureCategory('grad', '毕业歌会背景设计', ['./qitazuopin/biyegehui.jpg','D:/Untitled/毕业歌会背景设计/cc39d57abb856da30c7fae2dd58371ec.jpg'])" class="cursor-pointer group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/[0.08] transition-all duration-500 hover:scale-[1.02]">
+          <div class="relative aspect-[16/10] work-img-container">
+            <img class="h-full w-full object-cover" src="./qitazuopin/biyegehui.jpg" alt="毕业歌会背景设计">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute left-2 right-2 bottom-2">
+              <div class="flex bg-white/10 border-white/10 border rounded-xl mx-2 my-2 pt-4 pr-4 pb-4 pl-4 backdrop-blur-xl items-center justify-between">
+                <span class="text-sm font-medium text-white font-geist">毕业歌会背景设计</span>
+                <span class="text-[10px] tracking-wider text-gray-300 uppercase font-geist">背景 · 舞美</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 分类2：学院宣传册设计 -->
+        <div onclick="openBrochureCategory('booklet', '学院宣传册设计', ['./qitazuopin/xueyuanxuanchuance.png','D:/Untitled/学院宣传册设计/项目简述-3.png','D:/Untitled/学院宣传册设计/项目简述-4.png'])" class="cursor-pointer group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/[0.08] transition-all duration-500 hover:scale-[1.02]">
+          <div class="relative aspect-[16/10] work-img-container">
+            <img class="h-full w-full object-cover" src="./qitazuopin/xueyuanxuanchuance.png" alt="学院宣传册设计">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute left-2 right-2 bottom-2">
+              <div class="flex bg-white/10 border-white/10 border rounded-xl mx-2 my-2 pt-4 pr-4 pb-4 pl-4 backdrop-blur-xl items-center justify-between">
+                <span class="text-sm font-medium text-white font-geist">学院宣传册设计</span>
+                <span class="text-[10px] tracking-wider text-gray-300 uppercase font-geist">排版 · 物料</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 分类3：展墙设计 -->
+        <div onclick="openBrochureCategory('wall', '展墙设计', ['./qitazuopin/zhanqiangsheji.png','D:/Untitled/展墙设计/项目简述-5.png','D:/Untitled/展墙设计/项目简述-6.png'])" class="cursor-pointer group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/[0.08] transition-all duration-500 hover:scale-[1.02]">
+          <div class="relative aspect-[16/10] work-img-container">
+            <img class="h-full w-full object-cover" src="./qitazuopin/zhanqiangsheji.png" alt="展墙设计">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute left-2 right-2 bottom-2">
+              <div class="flex bg-white/10 border-white/10 border rounded-xl mx-2 my-2 pt-4 pr-4 pb-4 pl-4 backdrop-blur-xl items-center justify-between">
+                <span class="text-sm font-medium text-white font-geist">展墙设计</span>
+                <span class="text-[10px] tracking-wider text-gray-300 uppercase font-geist">展示 · 空间</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 分类4：其他海报 -->
+        <div onclick="openBrochureCategory('poster', '其他海报', ['./qitahaibao/dierzhang.png','D:/Untitled/其他海报/11de4d7980aa85b37169cdb75cd7bf0f.png','D:/Untitled/其他海报/34169fdf0ff8403fb41be451194837e6.png','D:/Untitled/其他海报/3dfa35bf582843344414dd28042d81a4.jpg','D:/Untitled/其他海报/8ed06bb983029961b55f8542cd216a8c.png','D:/Untitled/其他海报/第一张.png','D:/Untitled/其他海报/第三张.png','D:/Untitled/其他海报/第四张.png'])" class="cursor-pointer group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/[0.08] transition-all duration-500 hover:scale-[1.02]">
+          <div class="relative aspect-[16/10] work-img-container">
+            <img class="h-full w-full object-cover" src="./qitahaibao/dierzhang.png" alt="其他海报">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute left-2 right-2 bottom-2">
+              <div class="flex bg-white/10 border-white/10 border rounded-xl mx-2 my-2 pt-4 pr-4 pb-4 pl-4 backdrop-blur-xl items-center justify-between">
+                <span class="text-sm font-medium text-white font-geist">其他海报</span>
+                <span class="text-[10px] tracking-wider text-gray-300 uppercase font-geist">平面 · 视觉</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 二级：分类详情轮播 -->
+    <div id="brochure-sub" class="hidden">
+      <button onclick="backToBrochureMain()" class="mb-4 inline-flex items-center gap-2 text-sm text-purple-300 hover:text-purple-200 transition-colors font-geist">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5V1L7 6l5 5V7"/><path d="M12 5v14"/><path d="M19 12c0 1.7-.7 3.3-1.9 4.4"/></svg>
+        返回分类列表
+      </button>
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-green-400 mb-1 font-geist">排版 · 物料设计</p>
+      <h2 id="brochure-sub-title" class="text-2xl lg:text-3xl font-geist tracking-tight font-light text-white mb-4"></h2>
+
+      <div class="modal-slideshow" data-slideshow="brochure-sub">
+        <div class="slideshow-track" id="track-brochure-sub"></div>
+        <button class="slide-btn slide-prev" onclick="slideMove('brochure-sub',-1)" aria-label="上一张">&#8592;</button>
+        <button class="slide-btn slide-next" onclick="slideMove('brochure-sub',1)" aria-label="下一张">&#8594;</button>
+        <div class="slideshow-footer">
+          <span class="slideshow-counter" id="counter-brochure-sub">1 / 1</span>
+          <div class="slideshow-dots" id="dots-brochure-sub"></div>
+        </div>
+        <div class="slideshow-progress-bar"><div class="slideshow-progress-fill" id="prog-brochure-sub" style="width:100%"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 微信二维码弹窗 -->
+<div id="modal-wechat" class="project-modal">
+  <div class="modal-backdrop" onclick="closeWechatQR()"></div>
+  <div class="modal-content" style="max-width:420px;text-align:center;padding:48px 32px 40px;">
+    <button class="modal-close" onclick="closeWechatQR()" aria-label="关闭">✕</button>
+    <img src="./icons/wechat2.png" alt="微信" class="w-10 h-10 mx-auto mb-4 object-contain">
+    <h2 class="text-2xl font-geist tracking-tight font-light text-white mb-2">微信扫码</h2>
+    <p class="text-sm text-gray-400 font-geist mb-6">扫码添加好友，期待与你的交流</p>
+    <div class="rounded-2xl bg-white p-4 inline-block mx-auto">
+      <img src="./shenmeisucai/shejifengge.png" alt="微信二维码" class="w-56 h-56 object-contain" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect width=%22200%22 height=%22200%22 fill=%22%23f0f0f0%22/><text x=%22100%22 y=%22105%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22999%22>微信二维码</text></svg>'">
+    </div>
+    <p class="text-xs text-gray-500 mt-4 font-geist">手机用户可长按保存图片后在微信中识别</p>
+  </div>
+</div>
+
+<!-- QQ二维码弹窗 -->
+<div id="modal-qq" class="project-modal">
+  <div class="modal-backdrop" onclick="closeQQQR()"></div>
+  <div class="modal-content" style="max-width:420px;text-align:center;padding:48px 32px 40px;">
+    <button class="modal-close" onclick="closeQQQR()" aria-label="关闭">✕</button>
+    <img src="./icons/qq2.png" alt="QQ" class="w-10 h-10 mx-auto mb-4 object-contain">
+    <h2 class="text-2xl font-geist tracking-tight font-light text-white mb-2">QQ 扫码</h2>
+    <p class="text-sm text-gray-400 font-geist mb-6">扫码添加好友 / 发起临时会话</p>
+    <div class="rounded-2xl bg-white p-4 inline-block mx-auto">
+      <img src="./shenmeisucai/chanpinjiagou.png" alt="QQ二维码" class="w-56 h-56 object-contain" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect width=%22200%22 height=%22200%22 fill=%22%23f0f0f0%22/><text x=%22100%22 y=%22105%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22999%22>QQ二维码</text></svg>'">
+    </div>
+    <p class="text-xs text-gray-500 mt-4 font-geist">手机用户可长按保存图片后在QQ中识别</p>
+  </div>
+</div>
+
+<!-- 图片灯箱 -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="关闭">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script>
+lucide.createIcons();
+
+// Mobile menu
+const menuBtn = document.getElementById('menuBtn');
+const mobileNav = document.getElementById('mobileNav');
+if (menuBtn && mobileNav) {
+  menuBtn.addEventListener('click', () => { mobileNav.classList.toggle('hidden'); });
+}
+
+// Back to Top
+const goToTopBtn = document.getElementById('goToTop');
+const heroSection = document.getElementById('heroSection');
+if (goToTopBtn && heroSection) {
+  goToTopBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
+// Letter-by-letter animation
+function animateHeadlineLetters() {
+  const headline = document.getElementById('heroHeadline');
+  if (!headline) return;
+  const text = headline.textContent;
+  headline.innerHTML = '';
+  text.split('').forEach((char, index) => {
+    const span = document.createElement('span');
+    span.textContent = char;
+    span.classList.add('letter-animated');
+    if (char === ' ') span.style.marginRight = '0.5rem';
+    setTimeout(() => { span.classList.add('animate'); }, 1000 + (index * 50));
+    headline.appendChild(span);
+  });
+}
+
+// Status indicator scroll effects
+const statusIndicator = document.querySelector('.fixed.left-8.top-1\\/2');
+let lastScrollY = window.scrollY;
+let ticking = false;
+
+function updateStatusIndicator() {
+  if (!statusIndicator) return;
+  const scrollY = window.scrollY;
+  const scrollProgress = Math.min(scrollY / (document.documentElement.scrollHeight - window.innerHeight), 1);
+  if (scrollY > 100) {
+    const translateY = -scrollY * 0.1;
+    const scale = Math.max(0.9, 1 - scrollProgress * 0.1);
+    statusIndicator.style.transform = `translateY(calc(-50% + ${translateY}px)) scale(${scale})`;
+  } else {
+    statusIndicator.style.transform = 'translateY(-50%) scale(1)';
+  }
+  lastScrollY = scrollY;
+  ticking = false;
+}
+
+function requestTick() {
+  if (!ticking) {
+    requestAnimationFrame(updateStatusIndicator);
+    ticking = true;
+  }
+}
+window.addEventListener('scroll', requestTick, { passive: true });
+
+// Cursor invert effect
+const heroSectionEl = document.getElementById('heroSection');
+const body = document.body;
+let isInHero = false;
+
+if (heroSectionEl) {
+  heroSectionEl.addEventListener('mouseenter', () => {
+    isInHero = true;
+    body.classList.add('cursor-invert-active');
+    body.style.cursor = 'none';
+  });
+  heroSectionEl.addEventListener('mouseleave', () => {
+    isInHero = false;
+    body.classList.remove('cursor-invert-active');
+    body.style.cursor = 'auto';
+  });
+  heroSectionEl.addEventListener('mousemove', (e) => {
+    if (!isInHero) return;
+    const x = e.clientX, y = e.clientY;
+    document.documentElement.style.setProperty('--cursor-x', x + 'px');
+    document.documentElement.style.setProperty('--cursor-y', y + 'px');
+    document.querySelectorAll('.cursor-invert-mask').forEach(mask => {
+      mask.style.setProperty('--cursor-x', x + 'px');
+      mask.style.setProperty('--cursor-y', y + 'px');
+    });
+
+    // ====== 视差效果 ======
+    const rect = heroSectionEl.getBoundingClientRect();
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const offsetX = ((x - rect.left) - centerX) / centerX;   // -1 ~ 1
+    const offsetY = ((y - rect.top) - centerY) / centerY;
+
+    // 装饰圆形缓慢跟随鼠标
+    const decoCircle = document.querySelector('.hero-deco-circle');
+    if (decoCircle) {
+      decoCircle.style.transform = `translate(${offsetX * 30}px, ${offsetY * 20}px)`;
+    }
+
+    // 头像轻微倾斜跟随
+    const avatar = document.querySelector('.hero-avatar');
+    if (avatar) {
+      avatar.style.transform = `rotate(${offsetX * 4}deg) translateY(${offsetY * -3}px)`;
+    }
+
+    // 标题整体微偏移
+    const titleWrap = document.querySelector('.hero-title-wrap');
+    if (titleWrap) {
+      titleWrap.style.transform = `translate(${offsetX * -8}px, ${offsetY * -5}px)`;
+    }
+  });
+
+  // 鼠标离开时重置视差
+  heroSectionEl.addEventListener('mouseleave', () => {
+    const decoCircle = document.querySelector('.hero-deco-circle');
+    if (decoCircle) decoCircle.style.transform = '';
+    const avatar = document.querySelector('.hero-avatar');
+    if (avatar) avatar.style.transform = '';
+    const titleWrap = document.querySelector('.hero-title-wrap');
+    if (titleWrap) titleWrap.style.transform = '';
+  });
+}
+
+// ====== 按钮点击涟漪效果 ======
+document.querySelectorAll('.hero-btn-primary, .hero-btn-secondary').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const ripple = this.querySelector('.btn-ripple');
+    if (!ripple) return;
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height) * 2.5;
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+    const r = document.createElement('span');
+    r.style.cssText = `
+      position: absolute; left: ${x}px; top: ${y}px;
+      width: ${size}px; height: ${size}px;
+      border-radius: 50%; pointer-events: none;
+      background: ${this.classList.contains('hero-btn-primary') ? 'rgba(167,139,250,0.3)' : 'rgba(255,255,255,0.15)'};
+      animation: btnRipple 0.55s ease-out forwards;
+    `;
+    ripple.appendChild(r);
+    setTimeout(() => r.remove(), 600);
+  });
+});
+
+// ====== 头像点击波纹 + 交互 ======
+const avatarWrapper = document.querySelector('.hero-avatar-wrapper');
+if (avatarWrapper) {
+  avatarWrapper.addEventListener('click', function() {
+    const ripple = this.querySelector('.avatar-ripple');
+    if (ripple) {
+      ripple.style.animation = 'none';
+      void ripple.offsetHeight; // 强制 reflow
+      ripple.style.animation = 'avatarRipple 0.6s ease-out forwards';
+    }
+  });
+}
+
+// ====== 标题逐字悬停增强 —— 相邻字也微微联动 ======
+function initLetterHoverEffect() {
+  const letters = document.querySelectorAll('#heroHeadline .letter-animated.animate');
+  letters.forEach((letter, i) => {
+    letter.addEventListener('mouseenter', () => {
+      // 左右相邻的字也稍微上浮
+      [i - 1, i + 1].forEach(j => {
+        if (letters[j]) letters[j].style.transform = 'translateY(-3px) scale(1.05)';
+      });
+    });
+    letter.addEventListener('mouseleave', () => {
+      [i - 1, i + 1].forEach(j => {
+        if (letters[j] && !letters[j].matches(':hover')) letters[j].style.transform = '';
+      });
+    });
+  });
+}
+// 延迟执行，等字母动画完成后
+setTimeout(initLetterHoverEffect, 2200);
+
+// ====== 统计数据交错入场悬停 ======
+document.querySelectorAll('.hero-stat').forEach((stat, i) => {
+  stat.style.transitionDelay = `${i * 80}ms`;
+});
+
+// ====== 项目标签点击动效 ======
+const projectTag = document.querySelector('#heroSection .inline-flex.items-center.gap-2.rounded-full.border');
+if (projectTag) {
+  projectTag.addEventListener('click', () => {
+    projectTag.style.transform = 'scale(0.95)';
+    setTimeout(() => { projectTag.style.transform = ''; }, 150);
+    // 点击后滚动到作品区
+    const workSection = document.getElementById('work');
+    if (workSection) workSection.scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+// Status indicator click -> contact
+if (statusIndicator) {
+  statusIndicator.addEventListener('click', () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) { contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+}
+
+// Init on load
+document.addEventListener('DOMContentLoaded', () => { animateHeadlineLetters(); });
+
+// ====== 项目弹窗 ======
+// 轮播状态记录
+const slideshowState = {};
+
+function initSlideshow(id) {
+  if (slideshowState[id]) return; // 已初始化
+  const track = document.getElementById('track-' + id);
+  if (!track) return;
+  const imgs = Array.from(track.querySelectorAll('img'));
+  const total = imgs.length;
+  slideshowState[id] = { idx: 0, total };
+
+  // 生成小圆点（超过12张只显示进度条，不显示圆点）
+  const dotsEl = document.getElementById('dots-' + id);
+  if (dotsEl && total <= 20) {
+    dotsEl.innerHTML = '';
+    imgs.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => slideTo(id, i);
+      dotsEl.appendChild(dot);
+    });
+  }
+  updateSlideshow(id, 0);
+}
+
+function slideTo(id, newIdx) {
+  const state = slideshowState[id];
+  if (!state) return;
+  const track = document.getElementById('track-' + id);
+  if (!track) return;
+  const imgs = Array.from(track.querySelectorAll('img'));
+  imgs[state.idx].classList.remove('active');
+  state.idx = (newIdx + state.total) % state.total;
+  imgs[state.idx].classList.add('active');
+  updateSlideshow(id, state.idx);
+}
+
+function slideMove(id, dir) {
+  const state = slideshowState[id];
+  if (!state) return;
+  slideTo(id, state.idx + dir);
+}
+
+function updateSlideshow(id, idx) {
+  const state = slideshowState[id];
+  if (!state) return;
+  const { total } = state;
+
+  // 计数器
+  const counter = document.getElementById('counter-' + id);
+  if (counter) counter.textContent = (idx + 1) + ' / ' + total;
+
+  // 小圆点
+  const dotsEl = document.getElementById('dots-' + id);
+  if (dotsEl) {
+    dotsEl.querySelectorAll('.slideshow-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === idx);
+    });
+  }
+
+  // 进度条
+  const prog = document.getElementById('prog-' + id);
+  if (prog) prog.style.width = ((idx + 1) / total * 100).toFixed(2) + '%';
+}
+
+function openProjectModal(id) {
+  const modal = document.getElementById('modal-' + id);
+  if (!modal) return;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  // 初始化轮播（懒初始化）
+  initSlideshow(id);
+}
+
+function closeProjectModal(id) {
+  const modal = document.getElementById('modal-' + id);
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ===== 微信二维码弹窗 =====
+function openWechatQR() {
+  const modal = document.getElementById('modal-wechat');
+  if (!modal) return;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeWechatQR() {
+  const modal = document.getElementById('modal-wechat');
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ===== QQ二维码弹窗 =====
+function openQQQR() {
+  const modal = document.getElementById('modal-qq');
+  if (!modal) return;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeQQQR() {
+  const modal = document.getElementById('modal-qq');
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ===== 其他视觉作品：二级分类导航 =====
+function openBrochureCategory(catId, catName, images) {
+  const mainEl = document.getElementById('brochure-main');
+  const subEl = document.getElementById('brochure-sub');
+  const titleEl = document.getElementById('brochure-sub-title');
+  const track = document.getElementById('track-brochure-sub');
+
+  // 设置标题
+  titleEl.textContent = catName;
+
+  // 清空并填充图片
+  track.innerHTML = '';
+  images.forEach(function(src, i) {
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = catName + ' - ' + (i + 1);
+    img.className = i === 0 ? 'active' : '';
+    img.setAttribute('onclick', "openLightbox(this.src)");
+    img.loading = 'lazy';
+    track.appendChild(img);
+  });
+
+  // 初始化轮播（复用已有函数）
+  delete slideshowState['brochure-sub']; // 重置
+  initSlideshow('brochure-sub');
+
+  // 切换视图
+  mainEl.classList.add('hidden');
+  mainEl.classList.remove('block');
+  subEl.classList.remove('hidden');
+  subEl.classList.add('block');
+}
+
+function backToBrochureMain() {
+  var mainEl = document.getElementById('brochure-main');
+  var subEl = document.getElementById('brochure-sub');
+  var closeBtn = document.getElementById('brochure-close-btn');
+  subEl.classList.add('hidden');
+  subEl.classList.remove('block');
+  mainEl.classList.remove('hidden');
+  mainEl.classList.add('block');
+  // 恢复关闭按钮为关闭弹窗（一级时）
+  if (closeBtn) closeBtn.onclick = closeBrochureModal;
+}
+
+// 关闭按钮行为：二级页面返回一级，一级页面关闭弹窗
+function brochureCloseAction() {
+  var subEl = document.getElementById('brochure-sub');
+  // 如果当前在二级页面，返回一级
+  if (subEl && !subEl.classList.contains('hidden')) {
+    backToBrochureMain();
+  } else {
+    // 在一级页面，直接关闭弹窗
+    closeProjectModal('brochure');
+  }
+}
+
+// 初始化关闭按钮事件
+(function() {
+  var btn = document.getElementById('brochure-close-btn');
+  if (btn) btn.onclick = brochureCloseAction;
+})();
+
+function openBrochureCategory(catId, catName, images) {
+  // 进入二级页面时，关闭按钮行为变为返回上一级
+  var closeBtn = document.getElementById('brochure-close-btn');
+  if (closeBtn) closeBtn.onclick = brochureCloseAction;
+
+  const mainEl = document.getElementById('brochure-main');
+  const subEl = document.getElementById('brochure-sub');
+  const titleEl = document.getElementById('brochure-sub-title');
+  const track = document.getElementById('track-brochure-sub');
+
+  // 设置标题
+  titleEl.textContent = catName;
+
+  // 清空并填充图片
+  track.innerHTML = '';
+  images.forEach(function(src, i) {
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = catName + ' - ' + (i + 1);
+    img.className = i === 0 ? 'active' : '';
+    img.setAttribute('onclick', "openLightbox(this.src)");
+    img.loading = 'lazy';
+    track.appendChild(img);
+  });
+
+  // 初始化轮播（复用已有函数）
+  delete slideshowState['brochure-sub'];
+  initSlideshow('brochure-sub');
+
+  // 切换视图
+  mainEl.classList.add('hidden');
+  mainEl.classList.remove('block');
+  subEl.classList.remove('hidden');
+  subEl.classList.add('block');
+}
+
+// ESC 关闭弹窗 / 左右键翻页
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    // 如果在其他视觉作品二级页面，返回一级而不是关闭
+    var brochureModal = document.getElementById('modal-brochure');
+    if (brochureModal && brochureModal.classList.contains('active')) {
+      var subEl = document.getElementById('brochure-sub');
+      if (subEl && !subEl.classList.contains('hidden')) {
+        backToBrochureMain();
+        return;
+      }
+    }
+    document.querySelectorAll('.project-modal.active').forEach(m => {
+      m.classList.remove('active');
+    });
+    document.body.style.overflow = '';
+    closeLightbox();
+  }
+  // 左右键翻页（弹窗打开时）
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    const activeModal = document.querySelector('.project-modal.active');
+    if (!activeModal) return;
+    const sid = activeModal.id.replace('modal-', '');
+    if (slideshowState[sid]) {
+      slideMove(sid, e.key === 'ArrowLeft' ? -1 : 1);
+    }
+  }
+});
+
+// ====== 轮播触摸滑动（手机端）======
+(function() {
+  let touchStartX = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  document.addEventListener('touchend', function(e) {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) < 40) return;
+    const activeModal = document.querySelector('.project-modal.active');
+    if (!activeModal) return;
+    const sid = activeModal.id.replace('modal-', '');
+    if (slideshowState[sid]) {
+      slideMove(sid, diff > 0 ? 1 : -1);
+    }
+  }, { passive: true });
+})();
+
+// ====== 图片灯箱 ======
+function openLightbox(src) {
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  if (!lb || !img) return;
+  img.src = src;
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+  lb.classList.remove('active');
+  // 如果弹窗仍然打开，保持 overflow hidden
+  if (!document.querySelector('.project-modal.active')) {
+    document.body.style.overflow = '';
+  }
+}
+
+// ====== 小程序项目：两级导航 ======
+function openAIMPDetail() {
+  var l1 = document.getElementById('ai-mp-level1');
+  var l2 = document.getElementById('ai-mp-level2');
+  l1.classList.add('hidden'); l1.classList.remove('block');
+  l2.classList.remove('hidden'); l2.classList.add('block');
+  // 滚动到板块顶部
+  l2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function backToAIMPLevel1() {
+  var l1 = document.getElementById('ai-mp-level1');
+  var l2 = document.getElementById('ai-mp-level2');
+  l2.classList.add('hidden'); l2.classList.remove('block');
+  l1.classList.remove('hidden'); l1.classList.add('block');
+}
+
+// ====== 小程序二维码处理 ======
+function handleMiniProgramQR(event) {
+  event.preventDefault();
+  var link = document.getElementById('ai-miniprogram-qrcode-link');
+  if (!link) return;
+  // PC端：尝试打开微信或显示提示
+  var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  if (isMobile) {
+    // 移动端：长按已通过原生行为支持，点击也提示
+    alert('请长按二维码识别，或在微信中搜索小程序名称');
+  } else {
+    // PC端：提示用户使用微信扫码
+    alert('请使用微信「扫一扫」扫描上方二维码体验小程序');
+  }
+}
+
+// ====== 开屏加载动画 ======
+(function() {
+  const axLoader = document.getElementById('ax-loader');
+  if (!axLoader) return;
+
+  const brandEl = axLoader.querySelector('.ax-loader__brand');
+  const barEl = axLoader.querySelector('.ax-loader__bar');
+  const metaEl = axLoader.querySelector('.ax-loader__meta');
+  const pctEl = axLoader.querySelector('.ax-loader__pct');
+  const counter = { v: 0 };
+
+  // 加载期间隐藏页面内容，避免闪烁
+  const mainContent = document.getElementById('profileImageWrap');
+  if (mainContent) mainContent.style.opacity = '0';
+
+  gsap.timeline({
+    defaults: { ease: 'power3.out' },
+    onComplete() {
+      gsap.to(axLoader, {
+        opacity: 0,
+        duration: 0.3,
+        onComplete() {
+          axLoader.remove();
+          // 恢复页面内容可见
+          if (mainContent) mainContent.style.opacity = '';
+        }
+      });
+    }
+  })
+    .to(brandEl, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9, ease: 'power2.out' }, 0)
+    .to(metaEl, { opacity: 1, duration: 0.6 }, 0.3)
+    .to(barEl, { scaleX: 1, duration: 1.1, ease: 'power2.inOut' }, 0.2)
+    .to(counter, {
+      v: 100,
+      duration: 1.1,
+      ease: 'power2.inOut',
+      onUpdate() {
+        pctEl.textContent = String(Math.round(counter.v)).padStart(3, '0');
+      }
+    }, 0.2)
+    .to([brandEl, metaEl], { opacity: 0, y: -20, filter: 'blur(8px)', duration: 0.4, ease: 'power2.in' }, '+=0.12')
+    .to(axLoader, { yPercent: -100, duration: 0.8, ease: 'power4.inOut' }, '<0.08')
+    // ====== Hero 入场动画 (4444.html 风格 - CSS 动画为主) ======
+    .add(() => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.defaults({ ease: 'power3.out' });
+
+      // 仅处理滚动时的微动效（入场由 CSS animate-* 类控制）
+      const hero = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#heroSection',
+          start: 'top top',
+          end: '+=80%',
+          scrub: 1,
+        }
+      });
+
+      hero
+        .to('#heroSection', { opacity: 0.6, duration: 1 }, 0)
+        .to('#heroHeadline', { yPercent: -15, duration: 1 }, 0);
+    }, '-=0.2');
+})();
+</script>
+</body></html>
